@@ -1,9 +1,11 @@
+<h1 align="center">✨ Welcome to Quincunx's World ✨</h1>
+
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Welcome%20to%20Quincunx's%20World&fontSize=50&animation=fadeIn&fontAlignY=38" />
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHY0M2p6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/L1R1tvI9svkIWwpVYr/giphy.gif" width="400" />
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=39FF14&center=true&vCenter=true&width=500&lines=Full+Stack+Developer;Ethical+Hacker+in+Training;Building+Next-Gen+WebOS;Open+Source+Contributor" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=00FFCC&center=true&vCenter=true&width=500&lines=Full+Stack+Developer;Ethical+Hacker+in+Training;Building+Next-Gen+WebOS;Creative+Coder+from+Bangladesh" alt="Typing SVG" />
 </p>
 
 ---
@@ -25,17 +27,9 @@
 
 ---
 
-### 📊 GitHub Activity & Stats
+### 📊 GitHub Stats
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Quincunx33&show_icons=true&theme=tokyonight&hide_border=false&count_private=true" alt="Stats" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Quincunx33&theme=tokyonight&hide_border=false" alt="Streak" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Quincunx33&layout=compact&theme=tokyonight&hide_border=false" alt="Top Languages" />
+  <img src="https://github-readme-stats.vercel.app/api?username=Quincunx33&show_icons=true&theme=dark&hide_border=false&count_private=true" alt="Stats" />
 </p>
 
 ---
@@ -54,9 +48,9 @@
 
 ### 📈 Profile Statistics
 <p align="left">
-  <img src="https://komarev.com/ghpvc/?username=Quincunx33&color=39FF14&style=flat-square&label=VISITORS" alt="Visitors" />
+  <img src="https://komarev.com/ghpvc/?username=Quincunx33&color=00FFCC&style=flat-square&label=VISITORS" alt="Visitors" />
 </p>
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=100&section=footer" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=00FFCC&height=100&section=footer" />
 </p>
