@@ -1,49 +1,86 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=280&section=header&text=Tasfiya%20Tabassum&fontSize=70&animation=fadeIn&fontAlignY=38&desc=Full%20Stack%20Developer%20|%20Cyber%20Security%20Enthusiast&descAlignY=62&descSize=22" width="100%" />
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHY0M2p6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6Z3Z6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/L1R1tvI9svkIWwpVYr/giphy.gif" width="100%" alt="Header Animation" />
 </div>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=24&pause=1000&color=00FFCC&center=true&vCenter=true&width=700&lines=Building+Next-Gen+Web+Applications;Exploring+Cybersecurity+%26+Ethical+Hacking;Creating+High-Speed+Automation+Tools;Turning+Complex+Ideas+Into+Code" alt="Typing SVG" />
-</p>
-
----
-
-### 🚀 About Me
-Hello! I am **Tasfiya Tabassum**, a passionate Full-Stack Developer and Cyber Security Enthusiast based in Khulna, Bangladesh. I love building high-performance applications, experimenting with browser-based operating systems, and crafting robust automation tools.
-
-- 🔭 **Currently exploring:** Advanced network protocols, system security, and WebAssembly.
-- ⚡ **Fun fact:** I spend most of my time optimizing code and designing seamless user interfaces.
-- 📫 **How to reach me:** [liquiderror600@gmail.com](mailto:liquiderror600@gmail.com)
-
----
-
-### 📂 Featured Projects
-
-<div align="center">
-
-| Project | Description | Tech Stack | Link |
-| :--- | :--- | :--- | :--- |
-| **🚀 bomber-v2** | High-speed SMS & Email automation tool with proxy support. | Python, AsyncIO | [View Repo](https://github.com/Quincunx33/bomber-v2) |
-| **🛡️ Stress-Tester** | Ultra-fast HTTP load generator and WAF audit tool. | Go / Python | [View Repo](https://github.com/Quincunx33/Stress-Tester) |
-| **🌐 Ip-tv** | Modern IP-TV streaming platform and player. | JavaScript, HTML5 | [View Repo](https://github.com/Quincunx33/Ip-tv) |
-| **⚡ Bolt-share** | Advanced P2P file sharing for local and online transfer. | WebRTC, Node.js | [View Repo](https://github.com/Quincunx33/Bolt-share) |
-| **💻 reVCDOS** | Web-based port of retro DOS environments running via WebAssembly. | WASM, JS | [View Repo](https://github.com/Quincunx33/reVCDOS) |
-| **💬 CipherChat6** | Secure end-to-end encrypted messaging interface. | React, WebCrypto | [View Repo](https://github.com/Quincunx33/CipherChat6) |
-
-</div>
-
----
-
-### 🏆 GitHub Trophies & Milestones
-<p align="center">
-  <a href="https://github.com/ryo-ma/github-profile-trophy">
-    <img src="https://github-profile-trophy.vercel.app/?username=Quincunx33&theme=tokyonight&no-bg=true&margin-w=15&row=1" alt="GitHub Trophies" />
+  <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=28&pause=1000&color=00FFCC&center=true&vCenter=true&width=700&lines=Full+Stack+Developer;Ethical+Hacker+in+Training;Building+Next-Gen+WebOS;Cyber+Security+Enthusiast" alt="Typing SVG" />
   </a>
 </p>
 
 ---
 
-### 🛠️ Tech Stack & Arsenal
+### 👤 Profile In ASCII
+<div align="center">
+<pre>
++++++++++++++++++++++++++++++;++++++;+*+;;++;+++;;;+;;+;;;++++++++++++++++++++++
+++++++++++++++++++++++;;+++;;;;;;;;;;+*+;;;;;;;;;;;;;;;;;;;;;;;;;;++++++++++++++
++++++++++++++;+++;;;;;;;;;;;;;;;;;;;;;*+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;+
+;+++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;*+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;++;;+++++
++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;+*?*???*+++++++++***+++++;;;;;;;+++*??????**
++++++;+;;;;;;;;;;;;;;;;;;;;;;;;;;;;*???*?????%S########S%????*+;;+;;+???%%%%???*
+;;+++;;;;;;;;;;;;;;;;;;;;+++++++;;+***????%%S#S%S###S%%%%?%???*+;;;*????%%%%%%??
++++++;;;;;;;;;;;;;;;;;;;+*????????????????%##?++*%%SSS%??%S%???*++*???%%%%%%%%?%
+++++;;;;;;;;;;;;;;;;;;;;;+?%%%?%SS%???????S#%?**??%S###S%SSS?%??%%????%%%S%%%%%%
++;++;;;;+++++;;;;;;;;+*++*?%%%???%SSSS??%%S%????????%S@#S%SS%%%SSS%*???%S##SSS%%
++;;++*???%%%??******??%%?%SSSSS%???%%S%?%%%**++++++*?%@@#SS%%SSSSSS%%SSSSS######
+????%%%%%SS%%%S%%%%%%%%%%SS#S%%%????%%??SSS%?***+++*?%#@@SS%%%###SSSSSSS##@@####
+?**%SS%%%SSSSS#SSS%?????%SS#SSSSSSS%%%??%S#S%??*****%#@@#S#S%%##SS%%%%??S#@@##@#
+??*?SSS%%S###SS##SS%%%%%S%S##@###@@@#S%?###S%%?%%SS#@@@#%S#S%%##S%%%%%?*%#@@####
+S?*?#SSS%%S###S##S###S###S##@##SS#S#@#%?###@@@####SSS#%??S#S%S##%***SSSS#@@@####
+S?++?SSSSSSSS##SSSSSSSS##S####@#@##@##%?SS##@#%%%S%??%%%SS##S%SS%**???%SSSSS%%%%
+*****?****************??%S#####@@@@@##%?S###?;:,:+?**%%*%SS#S%???%%%%%%%%%%%%S%S
+S%SSSS%%%SSSS%%%?++++++++*????%??%%%?????%?+;::,,;+**S*+*S%SS%%%SSS%SS%%%%%S?*?%
+%????????????????*?????%%%%%%SSSSS#######%**;::::;*+?%+++%#%SS%???%%%%S##S#S*?*?
+%%%%SSSSS#######@@@@@@@@@@######SSSS%%%%?*??+;:::;*+?*+++?@#S#S%?????*SSS??%?%??
+@@@@@@@@@#########SSSS%%%%%%??*???????***?*+*+::,;**?++++*@@S#SSSSSSSSSS??**%#%?
+SSS%%???*****++*********?*++;;;;;;;++***??*++::::*??%*+++*@@S##S?%%%SSS??**%S#??
+***+;;;;;:::::::::::::;;;;;;;++++++;+***?*+**++;;???%*+++?@@S#SS?????????*??%S??
+++++;;;;+++++++;;;;;;;;:::::::::::::+%???+?*;+*+???%****;?#@##SS%;;++*??*****???
+?*********+++;;;;;;;;++++++++++;:;+++?%*+++*;:;+%???***++?S###S#S*+**???????S#**
+++++++++*****????****+++++;+;;;+++++**%*+;;+:;+???%?***+;*%#@##S#%*+%%?*+***%S*+
+++;;;;;;;;;;;;;;+++****??????*+**++**??+;:++:+?%?%%****+:;*####SS?**??*+;+++?S*+
+SS%??**+++;;;;;;;;;;;;;;;;;;+**????**?+;::+;:?%??S?****+:,;SS%*??????*?%????SS**
+*?%%%SS#SSS%????***++;;;;;;?%%%???%?*+;::;+;?S?*%#**?**;,,;%S?;;;+??**;++**?SS*%
+++*+++++*?%%SSSSSSSS%??***?SSSSSSS%?*;:::;+;%%??SS?****:,,;%?%+++*?**+;;;;;+??**
++++++;;;;;;;+++++*??%S#S####@####%???;;::+**%??SS???**+:,,;?*%????**??*++***%%*+
+++++++++;;;;+++++***?######SS###S*??*;;:+?%%??%S???***;,,,+?*?**??**?****?%%#%?%
+%?***+*****????%????%S%?*++;?S##?++;;;;;*?%%?%S%???**+;,,,??*??****++++;;+++#?*%
+S%%???????????****+++++;;;;?###%***;;;;++%%??S%???***;:,,;%?**?***+;++++;;;+#?*S
+???????%%%S%%??**+++++++++?###%*??****++%S??S%????*?++::,,%%**?**+**++++++;*#?%#
+?%%SSS%%S######SSS%%?***+%###S*+****+**%#%?%S??????*++:,,,?%?*??**?SSS%%??*?%**?
+*?S###SSSSS#S#######SSS%S#####S%?**++*S#S?%S???????*+;:::,*%?*???*+?S###S%????S%
+S###SS###SS@#S###SSS###SSS###S%S##S%?%#S%%S????????*+;::::+%?***?**++*??**?##*%%
+##@#S?%S#S%##SS#SS##S#SSS###S%?%S%%SSSS%%S%????????*+:::::+%%?*+*??*+*?**?S#S*??
+#####S??%S%SSS###S@@SSSS###%%?*?%%?%%SS%S%???????***+:::::+%%?***?*%***??S##S*?%
+</pre>
+</div>
+
+---
+
+### 🚀 About Me
+I am **Tasfiya Tabassum**, a Full-Stack Developer and Cyber Security Researcher from Bangladesh. I specialize in building high-performance automation tools and browser-based systems.
+
+- 🔭 **Current Focus:** Developing ultra-fast stress testers and SMS/Email automation tools.
+- 💻 **Tech Passion:** Ethical hacking, WebOS development, and high-speed networking.
+- 🎓 **Education:** Continuously learning Advanced Cyber Security and Systems Architecture.
+- 📫 **Contact:** [liquiderror600@gmail.com](mailto:liquiderror600@gmail.com)
+
+---
+
+### 📂 Featured Projects
+
+| Project | Description | Tech Stack | Link |
+| :--- | :--- | :--- | :--- |
+| **🚀 bomber-v2** | High-speed SMS & Email automation tool with proxy support. | Python, AsyncIO | [View Repo](https://github.com/Quincunx33/bomber-v2) |
+| **🛡️ Stress-Tester** | Ultra-fast HTTP load generator and WAF audit tool. | TypeScript | [View Repo](https://github.com/Quincunx33/Stress-Tester) |
+| **🌐 Ip-tv** | Modern IP-TV streaming platform and player. | JavaScript, HTML5 | [View Repo](https://github.com/Quincunx33/Ip-tv) |
+| **⚡ Bolt-share** | Advanced P2P file sharing for local and online transfer. | WebRTC, Node.js | [View Repo](https://github.com/Quincunx33/Bolt-share) |
+| **💻 reVCDOS** | Web-based port of retro DOS environments via WebAssembly. | WASM, JS | [View Repo](https://github.com/Quincunx33/reVCDOS) |
+
+---
+
+### 🛠️ My Tech Arsenal
 
 <p align="center">
   <img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs,tailwind,nodejs,express,python,mongodb,mysql,git,github,linux,docker,vscode,figma,postman&perline=10" alt="Tech Stack" />
@@ -51,7 +88,7 @@ Hello! I am **Tasfiya Tabassum**, a passionate Full-Stack Developer and Cyber Se
 
 ---
 
-### 📊 GitHub Analytics & Stats
+### 📈 GitHub Stats & Analytics
 
 <p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=Quincunx33&theme=tokyonight&hide_border=true&background=0D1117" alt="GitHub Streak" />
@@ -64,7 +101,14 @@ Hello! I am **Tasfiya Tabassum**, a passionate Full-Stack Developer and Cyber Se
 
 ---
 
-### 🌐 Connect With Me
+### 🐍 Contribution Activity
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Quincunx33/Quincunx33/output/github-contribution-grid-snake.svg" alt="Snake animation" />
+</p>
+
+---
+
+### 🤝 Connect With Me
 
 <p align="center">
   <a href="mailto:liquiderror600@gmail.com">
@@ -83,5 +127,5 @@ Hello! I am **Tasfiya Tabassum**, a passionate Full-Stack Developer and Cyber Se
 </p>
 
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=120&section=footer" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer" width="100%" />
 </div>
