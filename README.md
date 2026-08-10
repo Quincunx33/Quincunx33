@@ -48,17 +48,15 @@ I am a **Full-Stack Developer** and **Cyber Security Enthusiast** from Khulna, B
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats-sigma-five.vercel.app/api?username=Quincunx33&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&bg_color=0D1117" alt="Stats" width="48%" />
-  <img src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Quincunx33&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117" alt="Langs" width="48%" />
+  <img src="https://github-readme-stats-anuraghazra.vercel.app/api?username=Quincunx33&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&bg_color=0D1117" alt="Stats" width="48%" />
+  <img src="https://github-readme-stats-anuraghazra.vercel.app/api/top-langs/?username=Quincunx33&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117" alt="Langs" width="48%" />
 </p>
 
 ---
 
-### 🏆 Achievements
+### 📊 Activity Graph
 <p align="center">
-  <a href="https://github.com/ryo-ma/github-profile-trophy">
-    <img src="https://github-profile-trophy.vercel.app/?username=Quincunx33&theme=tokyonight&no-bg=true&margin-w=15&row=1" alt="Trophies" />
-  </a>
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Quincunx33&theme=tokyo-night&hide_border=true&area=true" alt="Activity Graph" width="100%" />
 </p>
 
 ---
