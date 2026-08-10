@@ -3,8 +3,8 @@
 </div>
 
 <div align="center">
-  <h3>আসসালামু আলাইকুম! 👋 আমি তাসফিয়া তাবাসসুম</h3>
-  <p>খুলনা, বাংলাদেশ থেকে একজন সৃজনশীল ডেভেলপার। আমি নতুন প্রযুক্তি শিখতে এবং তা দিয়ে বাস্তব সমস্যার সমাধান করতে ভালোবাসি।</p>
+  <h3>Hello there! 👋 I'm Tasfiya Tabassum</h3>
+  <p>A passionate developer from Khulna, Bangladesh, dedicated to building secure and scalable digital solutions.</p>
 </div>
 
 <p align="center">
@@ -17,9 +17,9 @@
 
 ### 💫 About Me
 - 🔭 **Currently Working On:** [bomber-v2](https://github.com/Quincunx33/bomber-v2) - High-speed automation tools.
-- 💻 **Passion:** Building lightweight **Web Operating Systems** and exploring the depths of the browser.
-- 🎓 **Learning Path:** Deep diving into **Advanced Cyber Security** and **Cloud Architecture**.
-- 🌍 **Mission:** Creating secure, scalable, and user-centric digital experiences.
+- 💻 **Passion:** Developing lightweight **Web Operating Systems** and exploring browser capabilities.
+- 🎓 **Learning Path:** Deep diving into **Advanced Cyber Security** and **Cloud Infrastructure**.
+- 🌍 **Mission:** Creating secure, user-centric experiences through clean and efficient code.
 
 ---
 
@@ -65,13 +65,6 @@
 <p align="center">
   <img src="https://github-readme-stats-sigma-five.vercel.app/api?username=Quincunx33&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&bg_color=0D1117" alt="GitHub Stats" width="48%" />
   <img src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Quincunx33&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117" alt="Top Languages" width="48%" />
-</p>
-
----
-
-### 🐍 Contribution Snake
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Quincunx33/Quincunx33/output/github-contribution-grid-snake.svg" alt="Snake animation" />
 </p>
 
 ---
