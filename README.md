@@ -108,6 +108,37 @@ An asynchronous messaging and API-testing laboratory. The profile presents it as
 </tr>
 </table>
 
+## More Visual Builds
+
+Two additional systems projects with their own visual identity.
+
+<table>
+<tr>
+<td width="50%">
+
+### Virtual-machine
+
+A mobile-first browser virtual machine emulator powered by **libv86**, **WebAssembly**, event-driven communication, and careful memory cleanup.
+
+<img src="./assets/projects/virtual-machine.jpg" alt="Generated Virtual-machine browser emulator visual" width="100%" />
+
+<a href="https://github.com/Quincunx33/Virtual-machine">Open Virtual-machine →</a>
+
+</td>
+<td width="50%">
+
+### EthicalHackingTools
+
+Project Sirra: a modular and cross-platform security testing environment with safe orchestration, scanner modules, sandboxing, and multi-format reporting.
+
+<img src="./assets/projects/ethical-hacking-tools.jpg" alt="Generated EthicalHackingTools security framework visual" width="100%" />
+
+<a href="https://github.com/Quincunx33/EthicalHackingTools">Open Project Sirra →</a>
+
+</td>
+</tr>
+</table>
+
 ## Project Atlas
 
 Use the expandable sections below to browse the wider project constellation.
