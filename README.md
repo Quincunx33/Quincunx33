@@ -68,17 +68,69 @@ A modern IPTV and streaming interface designed around discovery, playback, chann
 | **Stack** | `TypeScript` · `React` |
 | **Themes** | Streaming · Media UI · Responsive web |
 
-## More experiments
+## Project constellation
+
+The repository list below captures the breadth of my current experiments, from security tooling and media systems to interactive simulations and cross-platform experiments.
+
+### Security, networking & developer tooling
 
 | Project | Direction | Link |
 | :--- | :--- | :--- |
-| **EthicalHackingTools** | Modular security testing, orchestration, sandboxing, and vulnerability assessment concepts. | [Explore](https://github.com/Quincunx33/EthicalHackingTools) |
+| **EthicalHackingTools** | Project Sirra: modular security testing, orchestration, sandboxing, and vulnerability assessment. | [Explore](https://github.com/Quincunx33/EthicalHackingTools) |
+| **Stress-Tester** | Cluster-driven HTTP load generation, benchmarking, and WAF auditing for authorized environments. | [Explore](https://github.com/Quincunx33/Stress-Tester) |
+| **stress-test-server** | High-performance benchmarking target with live logging, cleanup jobs, and synthetic discovery fixtures. | [Explore](https://github.com/Quincunx33/stress-test-server) |
+| **stressTest-landing** | Focused landing experience for HTTP load testing and API performance benchmarking. | [Explore](https://github.com/Quincunx33/stressTest-landing) |
+| **ammo.js** | JavaScript port of the Bullet physics engine through Emscripten. | [Explore](https://github.com/Quincunx33/ammo.js) |
+
+### Communication, media & file workflows
+
+| Project | Direction | Link |
+| :--- | :--- | :--- |
 | **Bolt-share** | Peer-to-peer file sharing for local and online transfer scenarios. | [Explore](https://github.com/Quincunx33/Bolt-share) |
-| **CipherChat** | Private, real-time communication and modern chat interface experiments. | [Explore](https://github.com/Quincunx33/CipherChat) |
-| **naruto-sasuke** | Hand-tracking interaction with real-time visual effects powered by MediaPipe and Gemini. | [Explore](https://github.com/Quincunx33/naruto-sasuke) |
-| **arm64-shell-app** | A mobile terminal emulator concept for arm64 environments. | [Explore](https://github.com/Quincunx33/arm64-shell-app) |
+| **CipherChat** | Real-time communication and modern chat interface experiments. | [Explore](https://github.com/Quincunx33/CipherChat) |
+| **CipherChat6** | A focused cipher and communication interface experiment. | [Explore](https://github.com/Quincunx33/CipherChat6) |
+| **cipherchat-e2ee** | End-to-end encrypted communication concepts. | [Explore](https://github.com/Quincunx33/cipherchat-e2ee) |
+| **Ip-tv** | StreamTube: a modern streaming interface with caching and media organization. | [Explore](https://github.com/Quincunx33/Ip-tv) |
+| **ip-tv-** | Additional IPTV and media interface exploration. | [Explore](https://github.com/Quincunx33/ip-tv-) |
+| **open-download** | A focused download utility experiment. | [Explore](https://github.com/Quincunx33/open-download) |
+| **cx-download-manager-permanent** | Persistent video download manager with metadata collection and a Python backend. | [Explore](https://github.com/Quincunx33/cx-download-manager-permanent) |
+| **bomber-telegram-bot** | Telegram automation experiment for controlled and educational use. | [Explore](https://github.com/Quincunx33/bomber-telegram-bot) |
+| **bomber-v2** | Async SMS, call, and email testing tool for educational and authorized security work. | [Explore](https://github.com/Quincunx33/bomber-v2) |
+
+### Interactive experiences & simulations
+
+| Project | Direction | Link |
+| :--- | :--- | :--- |
+| **naruto-sasuke** | Hand-tracking interaction with real-time effects powered by MediaPipe and Gemini. | [Explore](https://github.com/Quincunx33/naruto-sasuke) |
+| **Cardriving** | A browser driving and interactive simulation experience. | [Explore](https://github.com/Quincunx33/Cardriving) |
+| **Skyrun** | A simulation-focused TypeScript experiment. | [Explore](https://github.com/Quincunx33/Skyrun) |
+| **fastroads** | A fast-paced road simulation built around a modified Roadster experience. | [Explore](https://github.com/Quincunx33/fastroads) |
+| **PS2-WebXperience** | A PlayStation-inspired browser interaction and visual experience. | [Explore](https://github.com/Quincunx33/PS2-WebXperience) |
+| **cyberpunk-** | A cyberpunk-themed visual and interface experiment. | [Explore](https://github.com/Quincunx33/cyberpunk-) |
+| **ipad-simulation** | An iPad-inspired interface simulation. | [Explore](https://github.com/Quincunx33/ipad-simulation) |
+
+### Browser, emulation & cross-platform experiments
+
+| Project | Direction | Link |
+| :--- | :--- | :--- |
+| **PyBrowser** | Terminal OS and Python playground concepts powered by browser technologies and WebAssembly. | [Explore](https://github.com/Quincunx33/PyBrowser) |
 | **v86-vm-app** | Browser-based emulation with OS boot flows, monitoring, and a 3D-styled interface. | [Explore](https://github.com/Quincunx33/v86-vm-app) |
+| **Virtual-machine** | An emulator experiment delivered through the browser. | [Explore](https://github.com/Quincunx33/Virtual-machine) |
+| **arm64-shell-app** | Mobile terminal emulator concept for arm64 environments. | [Explore](https://github.com/Quincunx33/arm64-shell-app) |
+| **Flash-Lite-Browser** | A lightweight browser concept focused on speed and a distinctive interface. | [Explore](https://github.com/Quincunx33/Flash-Lite-Browser) |
 | **Infinite-Drive** | An AI-assisted drive experience and interface experiment. | [Explore](https://github.com/Quincunx33/Infinite-Drive) |
+| **uxos** | An interface and operating-environment experiment. | [Explore](https://github.com/Quincunx33/uxos) |
+| **RDP** | Remote desktop and access-oriented experimentation. | [Explore](https://github.com/Quincunx33/RDP) |
+
+### Creative builds & portfolio work
+
+| Project | Direction | Link |
+| :--- | :--- | :--- |
+| **Opec-valley** | A TypeScript creative experience. | [Explore](https://github.com/Quincunx33/Opec-valley) |
+| **Data** | A lightweight HTML data and interface experiment. | [Explore](https://github.com/Quincunx33/Data) |
+| **app** | A JavaScript application experiment. | [Explore](https://github.com/Quincunx33/app) |
+| **downlod-** | A download-focused TypeScript experiment. | [Explore](https://github.com/Quincunx33/downlod-) |
+| **remix-personal-portfolio** | A personal portfolio experience built with modern TypeScript tooling. | [Explore](https://github.com/Quincunx33/remix-personal-portfolio) |
 
 ## Tools I reach for
 
