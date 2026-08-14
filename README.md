@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/profile-banner.png" alt="Futuristic software engineering workspace" width="100%" />
+  <img src="./assets/profile-hero-quincunx33.png" alt="Futuristic software engineering workspace" width="100%" />
 </div>
 
 <br />
@@ -38,35 +38,71 @@ I enjoy taking difficult ideas—distributed transfer, private communication, pe
 
 ## Featured Lab
 
+Five projects, five different signals: performance, infrastructure, responsible testing, and connected systems.
+
 <table>
 <tr>
-<td width="60%">
+<td width="50%">
 
 ### Stress-Tester
 
-A cluster-driven HTTP load generator and WAF audit platform for **authorized testing environments**. The project focuses on throughput, observability, controlled experiments, and readable performance signals.
+A cluster-driven HTTP load generator and WAF audit platform for **authorized testing environments**. It turns traffic, latency, and resilience into readable engineering signals.
+
+<img src="./assets/projects/stress-tester-generated.jpg" alt="Generated Stress-Tester network analytics visual" width="100%" />
 
 <a href="https://github.com/Quincunx33/Stress-Tester">Open the Stress-Tester lab →</a>
 
 </td>
-<td width="40%">
-<img src="./assets/projects/stress-tester.jpg" alt="Stress-Tester network analytics visual" width="100%" />
+<td width="50%">
+
+### stress-test-server
+
+A dependable benchmarking target with live request logs, health signals, REST endpoints, and predictable synthetic fixtures.
+
+<img src="./assets/projects/stress-test-server.jpg" alt="Generated stress-test-server observability visual" width="100%" />
+
+<a href="https://github.com/Quincunx33/stress-test-server">Open the test server →</a>
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### stressTest-landing
+
+A control-room style landing experience for exposing API bottlenecks, latency cliffs, and failure thresholds before production.
+
+<img src="./assets/projects/stressTest-landing.jpg" alt="Generated Pipeline Stress Tester dashboard visual" width="100%" />
+
+<a href="https://github.com/Quincunx33/stressTest-landing">Open the pipeline →</a>
+
+</td>
+<td width="50%">
+
+### Bolt-share
+
+A peer-to-peer file-sharing concept built around direct device connections, secure transfer paths, and a clear transfer experience.
+
+<img src="./assets/projects/bolt-share.jpg" alt="Generated Bolt-share peer-to-peer transfer visual" width="100%" />
+
+<a href="https://github.com/Quincunx33/Bolt-share">Open Bolt-share →</a>
+
 </td>
 </tr>
 </table>
 
 <table>
 <tr>
-<td width="40%">
-<img src="./assets/projects/streamtube.jpg" alt="StreamTube project logo" width="190" />
+<td width="42%">
+<img src="./assets/projects/bomber-v2.jpg" alt="Generated bomber-v2 controlled API testing visual" width="100%" />
 </td>
-<td width="60%">
+<td width="58%">
 
-### StreamTube
+### bomber-v2
 
-A modern IPTV and media interface built around discovery, playback, channel organization, and a cinematic visual language.
+An asynchronous messaging and API-testing laboratory. The profile presents it as a **controlled, educational, authorized testing project**, with emphasis on rate limits, observability, and responsible use.
 
-<a href="https://github.com/Quincunx33/Ip-tv">Open the StreamTube project →</a>
+<a href="https://github.com/Quincunx33/bomber-v2">Open the bomber-v2 repository →</a>
 
 </td>
 </tr>
