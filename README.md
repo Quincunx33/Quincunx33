@@ -10,6 +10,7 @@
   <p>Building useful experiments where systems, interfaces, and the modern web meet.</p>
   <br />
   <a href="#featured-lab"><img src="https://img.shields.io/badge/ENTER%20THE%20LAB-00D9FF?style=for-the-badge&logo=github&logoColor=07111F" alt="Enter the featured lab" /></a>
+  <a href="https://taissu.pages.dev"><img src="https://img.shields.io/badge/VISIT%20PORTFOLIO-8B5CF6?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Visit portfolio" /></a>
   <a href="mailto:liquiderror600@gmail.com"><img src="https://img.shields.io/badge/CONTACT-111827?style=for-the-badge&logo=gmail&logoColor=white" alt="Contact by email" /></a>
 </div>
 
@@ -250,6 +251,7 @@ These visuals are stored inside this repository, so the profile does not depend 
 ## Connect
 
 <p align="center">
+  <a href="https://taissu.pages.dev"><img src="https://img.shields.io/badge/Portfolio-taissu.pages.dev-8B5CF6?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio website" /></a>
   <a href="mailto:liquiderror600@gmail.com"><img src="https://img.shields.io/badge/Email-liquiderror600%40gmail.com-00D9FF?style=for-the-badge&logo=gmail&logoColor=07111F" alt="Email" /></a>
   <a href="https://www.facebook.com/taissuuu?"><img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook" /></a>
   <a href="https://www.instagram.com/tasfiya__tabassum__?"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" /></a>
