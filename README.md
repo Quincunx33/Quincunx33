@@ -202,9 +202,14 @@ Use the expandable sections below to browse the wider project constellation.
 
 ## Activity
 
+These visuals are stored inside this repository, so the profile does not depend on a third-party statistics service to render its key story.
+
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Quincunx33&show_icons=true&hide_border=true&theme=tokyonight&bg_color=0B1220&title_color=00D9FF&icon_color=8B5CF6&text_color=CBD5E1&count_private=true" alt="GitHub statistics" width="49%" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Quincunx33&layout=compact&hide_border=true&theme=tokyonight&bg_color=0B1220&title_color=00D9FF&text_color=CBD5E1" alt="Top languages" width="49%" />
+  <img src="./assets/profile-build-signal.svg" alt="Quincunx33 local build signal visual" width="100%" />
+</p>
+
+<p align="center">
+  <img src="./assets/public-project-atlas.svg" alt="Quincunx33 public project and language overview" width="100%" />
 </p>
 
 <p align="center">
