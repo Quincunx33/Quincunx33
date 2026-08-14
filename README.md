@@ -140,6 +140,43 @@ Project Sirra: a modular and cross-platform security testing environment with sa
 </tr>
 </table>
 
+## Recently Shipped
+
+The newest public builds are collected here so the profile stays easy to scan without losing the full repository atlas below.
+
+<details open>
+<summary><strong>Systems, interfaces &amp; developer tools</strong></summary>
+
+| Project | What it is | Stack |
+|---|---|---|
+| [mycat-companion](https://github.com/Quincunx33/mycat-companion) | Cross-platform desktop cat companion with pet care, Pomodoro focus sessions, sticky notes, sounds, eye tracking, and dark skins. | Python |
+| [cronjob](https://github.com/Quincunx33/cronjob) | Visual cron and HTTP ping dashboard with next-run visibility, execution history, and deduplicated failure alerts. | TypeScript |
+| [personal-portfolio](https://github.com/Quincunx33/personal-portfolio) | React/Vite portfolio for experiments, security tooling, systems work, and the modern web. | TypeScript |
+| [ipad-simulation](https://github.com/Quincunx33/ipad-simulation) | Interactive iPad mini and iPadOS-inspired browser simulator with responsive controls and Liquid Glass-style surfaces. | TypeScript |
+
+</details>
+
+<details>
+<summary><strong>Security research &amp; defensive analysis</strong></summary>
+
+| Project | What it is | Stack |
+|---|---|---|
+| [phishGard](https://github.com/Quincunx33/phishGard) | Defensive server-side phishing URL analysis with headless auditing and supplemental intelligence. | TypeScript |
+| [Ai-jailbreak](https://github.com/Quincunx33/Ai-jailbreak) | A red-team and AI safety research collection covering prompt-injection and model robustness techniques. | Research |
+
+> These security-focused projects are presented for authorized testing, defensive analysis, and AI-safety research only.
+
+</details>
+
+<details>
+<summary><strong>Creative computing &amp; scientific interaction</strong></summary>
+
+| Project | What it is | Stack |
+|---|---|---|
+| [solar-sclipse](https://github.com/Quincunx33/solar-sclipse) | Interactive 3D total solar eclipse simulator with a historical replay archive. | TypeScript |
+
+</details>
+
 ## Project Atlas
 
 Use the expandable sections below to browse the wider project constellation.
