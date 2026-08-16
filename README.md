@@ -177,6 +177,23 @@ The newest public builds are collected here so the profile stays easy to scan wi
 
 </details>
 
+## Latest Public Builds
+
+A few fresh repositories have joined the public lab.
+
+<details open>
+<summary><strong>Virtualization, mobile Linux &amp; defensive tooling</strong></summary>
+
+| Project | What it is | Stack |
+|---|---|---|
+| [kali-minimal](https://github.com/Quincunx33/kali-minimal) | Ultra-minimal terminal-only Kali Linux images for i386, ARM64, and x86_64 virtualization with QEMU and UTM SE support. | Linux / QEMU |
+| [ishkali-vnc](https://github.com/Quincunx33/ishkali-vnc) | A pre-built Alpine-based iSH rootfs for iOS with a broad command set, compilers, editors, and VNC support. | iOS / Alpine |
+| [penbox](https://github.com/Quincunx33/penbox) | A cross-platform Python security research toolbox for authorized scanning, network analysis, OSINT, and defensive experimentation. | Python |
+
+> Security and penetration-testing projects are intended only for authorized labs, defensive analysis, and responsible research.
+
+</details>
+
 ## Project Atlas
 
 Use the expandable sections below to browse the wider project constellation.
