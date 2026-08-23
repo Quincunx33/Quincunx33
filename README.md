@@ -194,6 +194,25 @@ A few fresh repositories have joined the public lab.
 
 </details>
 
+## New Projects
+
+The public lab keeps expanding. These latest repositories add new directions across AI safety, media tooling, browser emulation, game technology, and 3D experimentation.
+
+<details open>
+<summary><strong>Latest public experiments</strong></summary>
+
+| Project | What it is | Stack |
+|---|---|---|
+| [ai-jailbracker](https://github.com/Quincunx33/ai-jailbracker) | A practical Tasfia AI persona prompt for authorized cybersecurity learning, defensive research, CTFs, and secure development. | Prompt research |
+| [downloader](https://github.com/Quincunx33/downloader) | Universal video, audio, and file downloader with both terminal and web interfaces. | Python |
+| [deepseek-harness-gemini](https://github.com/Quincunx33/deepseek-harness-gemini) | Harness setup for experimenting with DeepSeek workflows and Gemini API configuration. | TypeScript |
+| [downlod-maneger](https://github.com/Quincunx33/downlod-maneger) | A focused download-management interface experiment. | TypeScript |
+| [reVCDOS](https://github.com/Quincunx33/reVCDOS) | Web-based Vice City experience running in the browser through WebAssembly. | Python / WebAssembly |
+| [three.js](https://github.com/Quincunx33/three.js) | JavaScript 3D library work for building interactive graphics and spatial interfaces. | JavaScript |
+| [re3](https://github.com/Quincunx33/re3) | An open-source C++ game-engine and reverse-engineering experiment. | C++ |
+
+</details>
+
 ## Project Atlas
 
 Use the expandable sections below to browse the wider project constellation.
