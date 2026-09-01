@@ -318,8 +318,10 @@ These visuals are stored inside this repository, so the profile does not depend 
 </p>
 
 <p align="center">
-  <img src="https://ghchart.rshah.org/00D9FF/Quincunx33" alt="GitHub contribution activity graph" width="100%" />
+  <img src="./assets/github-contributions.png" alt="GitHub contributions over the last year; brighter squares indicate more activity" width="100%" />
 </p>
+
+<p align="center"><sub>Each square represents one day. Darker squares mean fewer contributions; brighter squares mean more activity.</sub></p>
 
 ## Connect
 
