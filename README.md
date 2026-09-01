@@ -318,7 +318,7 @@ These visuals are stored inside this repository, so the profile does not depend 
 </p>
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Quincunx33&theme=github-compact&hide_border=true&area=true&bg_color=0B1220&color=CBD5E1&line=00D9FF&point=8B5CF6" alt="GitHub activity graph" width="100%" />
+  <img src="https://ghchart.rshah.org/00D9FF/Quincunx33" alt="GitHub contribution activity graph" width="100%" />
 </p>
 
 ## Connect
