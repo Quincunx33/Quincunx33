@@ -35,6 +35,8 @@
 <a href="https://www.instagram.com/tasfiya__tabassum__/"><img src="https://img.shields.io/badge/Instagram-a78bfa?style=for-the-badge&logo=instagram&logoColor=0d0e16" alt="Instagram"/></a>
 <a href="https://www.facebook.com/taissuuu"><img src="https://img.shields.io/badge/Facebook-34d399?style=for-the-badge&logo=facebook&logoColor=0d0e16" alt="Facebook"/></a>
 <br/><br/>
+<img src="https://komarev.com/ghpvc/?username=Quincunx33&label=Profile%20views&color=22d3ee&style=for-the-badge" alt="Profile views"/>
+
 **Always learning, always building.**
 </div>
 
