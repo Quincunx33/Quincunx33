@@ -19,7 +19,7 @@ jobs:
       - name: Generate snake animation
         uses: Platane/snk/svg-only@v3
         with:
-          github_user_name: Tasfiyamittal0920
+          github_user_name: Quincunx33
           outputs: |
             dist/github-snake.svg?palette=github-dark
             dist/github-snake-pink.svg?color_snake=#ff7eb6&color_dots=#2d1b4e,#5b2a86,#8b5cf6,#c084fc,#ff7eb6
