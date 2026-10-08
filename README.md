@@ -4,7 +4,7 @@
 
 <img src="./about-life.svg?v=1" alt="What I build and life beyond code" width="100%"/>
 
-<img src="./stack.svg?v=1" alt="Technology stack" width="100%"/>
+<img src="./tech-stack.svg?v=2" alt="Technology stack" width="100%"/>
 
 <img src="./id-dashboard.svg?v=4" alt="Developer ID and dashboard" width="100%"/>
 
