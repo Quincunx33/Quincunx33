@@ -27,7 +27,7 @@
 
 <img src="./profile-3d-contrib/profile-night-view.svg?v=1" alt="3D contribution city" width="100%"/>
 
-<img src="./connect.svg?v=1" alt="Let's connect" width="100%"/>
+<img src="./connect.svg?v=2" alt="Let's connect" width="100%"/>
 
 <div align="center">
 <a href="https://github.com/Quincunx33"><img src="https://img.shields.io/badge/GitHub-22d3ee?style=for-the-badge&logo=github&logoColor=0d0e16" alt="GitHub"/></a>
