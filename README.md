@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./hero-fresh.svg" alt="Hi, I am Tasfiya Tabassum — Full-Stack Developer" width="100%"/>
+<img src="./hero-tasfiya.svg" alt="Hi, I am Tasfiya Tabassum — Full-Stack Developer" width="100%"/>
 
 <img src="./about-life.svg?v=1" alt="What I build and life beyond code" width="100%"/>
 
