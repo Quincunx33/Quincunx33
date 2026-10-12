@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh the GitHub-derived metrics in id-dashboard.svg."""
+"""Refresh the GitHub-derived metrics in profile-dashboard.svg."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ from urllib.request import Request, urlopen
 
 USERNAME = os.environ.get("GITHUB_USERNAME", "Quincunx33")
 API_BASE = os.environ.get("GITHUB_API_URL", "https://api.github.com").rstrip("/")
-SVG_PATH = "id-dashboard.svg"
+SVG_PATH = "profile-dashboard.svg"
 README_PATH = "README.md"
 
 
@@ -156,13 +156,13 @@ def main() -> None:
     with open(README_PATH, encoding="utf-8") as source:
         readme = source.read()
     readme, count = re.subn(
-        r'src="\./id-dashboard\.svg(?:\?v=[^"]*)?"',
-        f'src="./id-dashboard.svg?v={cache_buster}"',
+        r'src="\./profile-dashboard\.svg(?:\?v=[^"]*)?"',
+        f'src="./profile-dashboard.svg?v={cache_buster}"',
         readme,
         count=1,
     )
     if count != 1:
-        raise RuntimeError("Could not find id-dashboard.svg image reference in README.md")
+        raise RuntimeError("Could not find profile-dashboard.svg image reference in README.md")
     with open(README_PATH, "w", encoding="utf-8", newline="\n") as destination:
         destination.write(readme)
 
