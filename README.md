@@ -11,6 +11,10 @@
 </div>
 
 <h1 align="center">Tasfia Tabassum</h1>
+<p align="center">
+  <strong>FULL-STACK DEVELOPER</strong><br/>
+  <img src="https://img.shields.io/badge/Location-Khulna%2C_Bangladesh-22d3ee?style=for-the-badge&amp;labelColor=171a2c" alt="Based in Khulna, Bangladesh"/>
+</p>
 
 ## Featured builds
 
