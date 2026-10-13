@@ -31,6 +31,9 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Refresh profile visitor badge
+        run: curl --fail --silent --show-error --location "https://komarev.com/ghpvc/?username=${{ github.repository_owner }}&label=Profile%20views&color=22d3ee&style=for-the-badge" --output assets/profile-views.svg
+
       - name: Fetch GitHub data and update dashboard
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -41,7 +44,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add profile-dashboard.svg README.md
+          git add profile-dashboard.svg assets/profile-views.svg README.md
           if git diff --cached --quiet; then
             echo "Dashboard is already up to date."
           else
