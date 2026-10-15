@@ -41,7 +41,7 @@
 <a href="https://www.instagram.com/tasfiya__tabassum__/"><img src="https://img.shields.io/badge/Instagram-a78bfa?style=for-the-badge&logo=instagram&logoColor=0d0e16" alt="Instagram"/></a>
 <a href="https://www.facebook.com/taissuuu"><img src="https://img.shields.io/badge/Facebook-34d399?style=for-the-badge&logo=facebook&logoColor=0d0e16" alt="Facebook"/></a>
 <br/><br/>
-<a href="https://github.com/Quincunx33"><img src="https://f5f66k.bot-keep.xyz/api/v1/counter/quincunx33.svg" alt="GitHub profile views"/></a>
+<a href="https://github.com/Quincunx33"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Ff5f66k.bot-keep.xyz%2Fapi%2Fv1%2Fcounter%2Fquincunx33&amp;query=%24.total&amp;label=PROFILE%20VIEWS&amp;style=for-the-badge&amp;logo=github&amp;logoColor=white&amp;labelColor=1f2937&amp;color=36d98f" alt="GitHub profile views"/></a>
 
 **Always learning, always building.**
 </div>
