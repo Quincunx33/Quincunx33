@@ -6,7 +6,7 @@
 
 <img src="./tech-stack.svg?v=2" alt="Technology stack" width="100%"/>
 
-<img src="./profile-dashboard.svg?v=20261109112554" alt="Developer ID and dashboard" width="100%"/>
+<img src="./profile-dashboard.svg?v=20261110110613" alt="Developer ID and dashboard" width="100%"/>
 
 </div>
 
