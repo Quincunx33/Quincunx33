@@ -303,10 +303,12 @@ def update_lanyard_handle() -> None:
         svg = source.read()
     old = "@Tasfiyamittal0920"
     new = "@tasfiya__tabassum__"
-    if old not in svg:
-        raise RuntimeError("Expected outdated lanyard handle was not found")
-    with open(path, "w", encoding="utf-8", newline="\n") as destination:
-        destination.write(svg.replace(old, new, 1))
+    if old in svg:
+        svg = svg.replace(old, new, 1)
+    elif new not in svg:
+        raise RuntimeError("Neither the old nor current lanyard handle was found")
+    with open(path, "w", encoding="utf-8", newline="\\n") as destination:
+        destination.write(svg)
 
 
 def update_readme_cache_buster() -> None:
