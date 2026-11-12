@@ -157,16 +157,36 @@ def update_dashboard(metrics: dict, updated: str) -> None:
     write_svg("profile-dashboard.svg", root)
 
 
+def update_hero_and_banners(metrics: dict) -> None:
+    hero = parse_svg("hero.svg")
+    find_node(hero, "text", **{"class": "jb", "x": "408", "y": "458"}).text = (
+        f"{metrics['stars']} stars · {metrics['public_repos']} repos"
+    )
+    write_svg("hero.svg", hero)
+
+    for path in ("tasfiya-banner.svg", "tasfiya-banner-light.svg"):
+        root = parse_svg(path)
+        for x, value in {
+            "118": metrics["public_repos"],
+            "258": metrics["following"],
+            "398": metrics["stars"],
+            "538": metrics["followers"],
+        }.items():
+            find_node(root, "text", **{"class": "st", "x": x, "y": "640"}).text = str(value)
+        write_svg(path, root)
+
+
 def update_secondary_stats(metrics: dict) -> None:
     root = parse_svg("tasfiya-stats.svg")
     values = {
-        "Total Stars Earned:": metrics["stars"],
-        "Following:": metrics["following"],
-        "Public Repos:": metrics["public_repos"],
-        "Followers:": metrics["followers"],
+        "Total Stars Earned:": ("Total Stars Earned:", metrics["stars"]),
+        "Total Commits:": ("Following:", metrics["following"]),
+        "Public Repos:": ("Public Repos:", metrics["public_repos"]),
+        "Followers:": ("Followers:", metrics["followers"]),
     }
-    for label, value in values.items():
-        label_node = find_text(root, label)
+    for old_label, (new_label, value) in values.items():
+        label_node = find_text(root, old_label)
+        label_node.text = new_label
         row = next((parent for parent in root.iter() if label_node in list(parent)), None)
         if row is None:
             raise RuntimeError(f"Could not locate stats row for {label}")
@@ -287,6 +307,7 @@ def main() -> None:
     metrics = calculate_metrics(user, repos)
     updated = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     update_dashboard(metrics, updated)
+    update_hero_and_banners(metrics)
     update_secondary_stats(metrics)
     languages = aggregate_language_bytes(metrics["original_repos"])
     with open("tasfiya-langs.svg", "w", encoding="utf-8", newline="\n") as output:
