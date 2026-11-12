@@ -307,7 +307,7 @@ def update_lanyard_handle() -> None:
         svg = svg.replace(old, new, 1)
     elif new not in svg:
         raise RuntimeError("Neither the old nor current lanyard handle was found")
-    with open(path, "w", encoding="utf-8", newline="\\n") as destination:
+    with open(path, "w", encoding="utf-8", newline="\n") as destination:
         destination.write(svg)
 
 
