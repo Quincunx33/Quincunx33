@@ -22,11 +22,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: Quincunx33
+      - name: Keep only the README contribution view
+        run: |
+          find profile-3d-contrib -maxdepth 1 -type f -name '*.svg' ! -name 'profile-night-view.svg' -delete
       - name: Commit & push
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add -A .
+          git add profile-3d-contrib/profile-night-view.svg
           if git commit -m "generated 3d contribution city"; then
             git pull --rebase origin main
             git push origin HEAD:main
