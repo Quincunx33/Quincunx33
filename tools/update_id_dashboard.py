@@ -150,7 +150,7 @@ def update_secondary_svgs(user: dict, total_stars: int) -> None:
     hero = replace_text_node(
         hero,
         r'<text class="jb" x="408" y="458"[^>]*>.*?</text>',
-        f"{total_stars} stars &#183; {public_repos} repos",
+        f"{total_stars} stars · {public_repos} repos",
         "hero GitHub statistics",
     )
     with open("hero.svg", "w", encoding="utf-8", newline="\n") as destination:
@@ -255,6 +255,14 @@ def main() -> None:
     )
     if count != 1:
         raise RuntimeError("Could not find profile-dashboard.svg image reference in README.md")
+    readme, count = re.subn(
+        r'src="\\./hero\\.svg(?:\\?v=[^"]*)?"',
+        f'src="./hero.svg?v={cache_buster}"',
+        readme,
+        count=1,
+    )
+    if count != 1:
+        raise RuntimeError("Could not find hero.svg image reference in README.md")
     with open(README_PATH, "w", encoding="utf-8", newline="\n") as destination:
         destination.write(readme)
 
