@@ -219,7 +219,7 @@ def update_secondary_stats(metrics: dict) -> None:
     )
     updated_categories = set()
     for prefix, new in trophy_values:
-        category = prefix.strip()
+        category = "Following" if prefix in ("Following ", "Commits ") else prefix.strip()
         if category in updated_categories:
             continue
         try:
