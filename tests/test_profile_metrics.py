@@ -50,6 +50,18 @@ class ProfileMetricsTests(unittest.TestCase):
         node.text = "new"
         self.assertEqual(updater.find_text(root, "new").text, "new")
 
+    def test_checked_in_profile_svgs_are_well_formed(self):
+        root = Path(__file__).resolve().parents[1]
+        paths = [
+            "profile-dashboard.svg", "hero.svg", "tasfiya-banner.svg",
+            "tasfiya-banner-light.svg", "tasfiya-stats.svg", "tasfiya-trophies.svg",
+            "tasfiya-langs.svg", "tasfiya-lanyard.svg",
+            "assets/public-project-atlas.svg", "profile-3d-contrib/profile-night-view.svg",
+        ]
+        for relative in paths:
+            with self.subTest(path=relative):
+                ET.parse(root / relative)
+
     def test_language_and_project_visuals_are_valid_svg(self):
         languages = updater.render_languages_svg(Counter({"Rust": 90, "C++": 30}))
         atlas = updater.render_project_atlas({
