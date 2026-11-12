@@ -4,9 +4,10 @@ on:
   schedule:
     - cron: "0 0 * * *"   # runs every day at midnight
   workflow_dispatch:       # lets you run it manually from the Actions tab
-  push:
-    branches:
-      - main
+
+concurrency:
+  group: contribution-snake-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: write
