@@ -20,10 +20,10 @@ jobs:
     name: generate-3d-contribution
     steps:
       - uses: actions/checkout@v5
-      - uses: yoshi389111/github-profile-3d-contrib@latest
+      - uses: yoshi389111/github-profile-3d-contrib@v0.9.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          USERNAME: ${{ github.repository_owner }}
+          USERNAME: Quincunx33
       - name: Commit & push
         run: |
           git config user.name github-actions
