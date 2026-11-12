@@ -146,7 +146,7 @@ def update_dashboard(metrics: dict, updated: str) -> None:
             raise RuntimeError(f"Expected one star-count text at y={y}")
         star_nodes[0].text = str(stars)
         bar_y = str(y - 11)
-        bar = find_node(root, "rect", x="592", y=bar_y)
+        bar = find_node(root, "rect", x="592", y=bar_y, fill="url(#barG)")
         bar.set("width", str(round(210 * stars / max_stars, 1) if max_stars else 0))
 
     find_node(root, "text", **{"class": "sg", "x": "936", "y": "322"}).text = str(metrics["followers"])
