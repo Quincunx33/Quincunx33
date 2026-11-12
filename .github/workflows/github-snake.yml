@@ -17,7 +17,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Generate snake animation
-        uses: Platane/snk/svg-only@v3
+        uses: Platane/snk/svg-only@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3
         with:
           github_user_name: Quincunx33
           outputs: |
@@ -25,7 +25,7 @@ jobs:
             dist/github-snake-pink.svg?color_snake=#ff7eb6&color_dots=#2d1b4e,#5b2a86,#8b5cf6,#c084fc,#ff7eb6
 
       - name: Push snake to output branch
-        uses: crazy-max/ghaction-github-pages@v3.1.0
+        uses: crazy-max/ghaction-github-pages@c0d7ff0487ee0415efb7f32dab10ea880330b1dd # v3.1.0
         with:
           target_branch: output
           build_dir: dist
