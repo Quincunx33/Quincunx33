@@ -188,7 +188,9 @@ def main() -> None:
     if missing:
         raise RuntimeError(f"GitHub API response is missing expected fields: {', '.join(missing)}")
 
-    total_stars = sum(int(repo.get("stargazers_count", 0)) for repo in repos)
+    # Forks are not original projects; exclude them from popularity totals and rankings.
+    original_repos = [repo for repo in repos if not repo.get("fork", False)]
+    total_stars = sum(int(repo.get("stargazers_count", 0)) for repo in original_repos)
     metrics = {
         "438.0": int(user["public_repos"]),
         "646.5": total_stars,
@@ -201,7 +203,7 @@ def main() -> None:
     original_svg = svg
     for x, value in metrics.items():
         svg = update_metric(svg, x, value)
-    svg = update_repo_rows(svg, repos)
+    svg = update_repo_rows(svg, original_repos)
     followers = int(user["followers"])
     following = int(user["following"])
     svg = replace_text_node(
@@ -270,7 +272,7 @@ def main() -> None:
         "Updated GitHub dashboard: "
         f"public repos={metrics['438.0']}, total stars={total_stars}, "
         f"followers={metrics['855.0']}, following={metrics['1063.5']}; "
-        f"top repos={min(len(repos), 5)}"
+        f"top original repos={min(len(original_repos), 5)}; forks excluded={len(repos) - len(original_repos)}"
     )
 
 
