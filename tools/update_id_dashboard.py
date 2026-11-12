@@ -256,7 +256,7 @@ def main() -> None:
     if count != 1:
         raise RuntimeError("Could not find profile-dashboard.svg image reference in README.md")
     readme, count = re.subn(
-        r'src="\\./hero\\.svg(?:\\?v=[^"]*)?"',
+        r'src="\./hero\.svg(?:\?v=[^"]*)?"',
         f'src="./hero.svg?v={cache_buster}"',
         readme,
         count=1,

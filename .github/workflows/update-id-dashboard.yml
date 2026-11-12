@@ -46,5 +46,6 @@ jobs:
             echo "Dashboard is already up to date."
           else
             git commit -m "Update live GitHub dashboard data"
+            git pull --rebase origin main
             git push origin HEAD:main
           fi
