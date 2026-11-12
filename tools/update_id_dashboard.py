@@ -105,6 +105,16 @@ def find_text(root: ET.Element, value: str) -> ET.Element:
     return matches[0]
 
 
+def find_text_prefix(root: ET.Element, prefix: str) -> ET.Element:
+    matches = [
+        node for node in text_nodes(root)
+        if "".join(node.itertext()).strip().startswith(prefix)
+    ]
+    if len(matches) != 1:
+        raise RuntimeError(f"Expected one SVG text node beginning with {prefix!r}; found {len(matches)}")
+    return matches[0]
+
+
 def find_node(root: ET.Element, tag: str, **attrs: str) -> ET.Element:
     matches = [
         node for node in root.iter(f"{SVG}{tag}")
@@ -180,12 +190,18 @@ def update_secondary_stats(metrics: dict) -> None:
     root = parse_svg("tasfiya-stats.svg")
     values = {
         "Total Stars Earned:": ("Total Stars Earned:", metrics["stars"]),
-        "Total Commits:": ("Following:", metrics["following"]),
+        "Following:": ("Following:", metrics["following"]),
         "Public Repos:": ("Public Repos:", metrics["public_repos"]),
         "Followers:": ("Followers:", metrics["followers"]),
     }
     for old_label, (new_label, value) in values.items():
-        label_node = find_text(root, old_label)
+        if old_label == "Following:":
+            try:
+                label_node = find_text(root, "Following:")
+            except RuntimeError:
+                label_node = find_text(root, "Total Commits:")
+        else:
+            label_node = find_text(root, old_label)
         label_node.text = new_label
         value_node = find_node(
             root, "text", x="316", y=label_node.get("y", "")
@@ -194,14 +210,26 @@ def update_secondary_stats(metrics: dict) -> None:
     write_svg("tasfiya-stats.svg", root)
 
     trophy = parse_svg("tasfiya-trophies.svg")
-    trophy_values = {
-        "Stars 650": f"Stars {metrics['stars']}",
-        "Followers 41": f"Followers {metrics['followers']}",
-        "Commits 42": f"Following {metrics['following']}",
-        "Repos 42": f"Repos {metrics['public_repos']}",
-    }
-    for old, new in trophy_values.items():
-        find_text(trophy, old).text = new
+    trophy_values = (
+        ("Stars ", f"Stars {metrics['stars']}"),
+        ("Followers ", f"Followers {metrics['followers']}"),
+        ("Following ", f"Following {metrics['following']}"),
+        ("Commits ", f"Following {metrics['following']}"),
+        ("Repos ", f"Repos {metrics['public_repos']}"),
+    )
+    updated_categories = set()
+    for prefix, new in trophy_values:
+        category = prefix.strip()
+        if category in updated_categories:
+            continue
+        try:
+            node = find_text_prefix(trophy, prefix)
+        except RuntimeError:
+            continue
+        node.text = new
+        updated_categories.add(category)
+    if not {"Stars", "Followers", "Following", "Repos"}.issubset(updated_categories):
+        raise RuntimeError("Could not update every live trophy metric")
     write_svg("tasfiya-trophies.svg", trophy)
 
 
