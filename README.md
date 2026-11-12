@@ -2,6 +2,8 @@
 
 <img src="./hero-khulna.svg" alt="Hi, I am Tasfiya Tabassum — Full-Stack Developer" width="100%"/>
 
+<img src="https://viscount-inzm9sse.manus.space/api/v1/counter/quincunx33.svg?v=86beaf2" alt="GitHub profile views"/>
+
 <img src="./about-life.svg?v=1" alt="What I build and life beyond code" width="100%"/>
 
 <img src="./tech-stack.svg?v=2" alt="Technology stack" width="100%"/>
@@ -41,7 +43,6 @@
 <a href="https://www.instagram.com/tasfiya__tabassum__/"><img src="https://img.shields.io/badge/Instagram-a78bfa?style=for-the-badge&logo=instagram&logoColor=0d0e16" alt="Instagram"/></a>
 <a href="https://www.facebook.com/taissuuu"><img src="https://img.shields.io/badge/Facebook-34d399?style=for-the-badge&logo=facebook&logoColor=0d0e16" alt="Facebook"/></a>
 <br/><br/>
-<img src="https://viscount-inzm9sse.manus.space/api/v1/counter/quincunx33.svg?v=86beaf2" alt="GitHub profile views"/>
 
 **Always learning, always building.**
 </div>
