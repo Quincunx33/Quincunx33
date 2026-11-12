@@ -37,6 +37,10 @@
 
 <img src="./profile-3d-contrib/profile-night-view.svg?v=1" alt="3D contribution city" width="100%"/>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Quincunx33/Quincunx33/output/github-snake.svg" alt="GitHub contribution snake animation" width="100%"/>
+</p>
+
 <img src="./connect.svg?v=2" alt="Let's connect" width="100%"/>
 
 <div align="center">
