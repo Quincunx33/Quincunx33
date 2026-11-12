@@ -4,8 +4,6 @@ on:
   schedule:
     - cron: "0 18 * * *"     # daily
   workflow_dispatch:          # run manually from the Actions tab
-  push:
-    branches: [main]
 
 concurrency:
   group: profile-assets-${{ github.ref }}
@@ -19,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     name: generate-3d-contribution
     steps:
-      - uses: actions/checkout@v5
-      - uses: yoshi389111/github-profile-3d-contrib@v0.9.3
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - uses: yoshi389111/github-profile-3d-contrib@7d95e7d4cdc028dd1e1cbd957d65f35efb12ae39 # v0.9.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: Quincunx33
