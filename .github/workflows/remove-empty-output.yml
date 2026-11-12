@@ -1,0 +1,19 @@
+name: Remove empty output branch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/remove-empty-output.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  remove-empty-output:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete the obsolete empty output branch
+        env:
+          GH_TOKEN: \${{ secrets.GITHUB_TOKEN }}
+        run: gh api --method DELETE "repos/\${{ github.repository }}/git/refs/heads/output"
