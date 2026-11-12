@@ -31,6 +31,19 @@ jobs:
           git config user.email github-actions@github.com
           git add profile-3d-contrib/profile-night-view.svg
           if git commit -m "generated 3d contribution city"; then
-            git pull --rebase origin main
-            git push origin HEAD:main
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              if git rebase origin/main; then
+                if git push origin HEAD:main; then
+                  echo "3D contribution city published."
+                  exit 0
+                fi
+              else
+                git rebase --abort || true
+              fi
+              echo "Push attempt $attempt failed; retrying against latest main."
+              sleep $((attempt * 2))
+            done
+            echo "Could not publish the 3D contribution city after 5 attempts."
+            exit 1
           fi
