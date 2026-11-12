@@ -4,7 +4,7 @@
   <img src="https://viscount-inzm9sse.manus.space/api/v1/counter/quincunx33.svg?v=62c6a1c-aurora" alt="GitHub profile views"/>
 </p>
 
-<img src="./hero-khulna.svg" alt="Hi, I am Tasfiya Tabassum — Full-Stack Developer" width="100%"/>
+<img src="./hero.svg" alt="Hi, I am Tasfiya Tabassum — Full-Stack Developer" width="100%"/>
 
 <img src="./about-life.svg?v=1" alt="What I build and life beyond code" width="100%"/>
 
