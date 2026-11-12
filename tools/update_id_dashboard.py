@@ -117,6 +117,70 @@ def update_repo_rows(svg: str, repos: list[dict]) -> str:
     return svg
 
 
+
+def replace_text_node(svg: str, pattern: str, value: object, label: str) -> str:
+    """Replace the text content of exactly one SVG text node."""
+    svg, count = re.subn(
+        pattern,
+        lambda match: re.sub(
+            r">(.*?)</text>",
+            lambda inner: ">" + escape(str(value)) + "</text>",
+            match.group(0),
+            count=1,
+            flags=re.DOTALL,
+        ),
+        svg,
+        count=1,
+        flags=re.DOTALL,
+    )
+    if count != 1:
+        raise RuntimeError(f"Could not find SVG text node: {label}")
+    return svg
+
+
+def update_secondary_svgs(user: dict, total_stars: int) -> None:
+    """Keep every shipped profile graphic on the same GitHub API metrics."""
+    followers = int(user["followers"])
+    following = int(user["following"])
+    public_repos = int(user["public_repos"])
+
+    # Hero headline statistics.
+    with open("hero.svg", encoding="utf-8") as source:
+        hero = source.read()
+    hero = replace_text_node(
+        hero,
+        r'<text class="jb" x="408" y="458"[^>]*>.*?</text>',
+        f"{total_stars} stars &#183; {public_repos} repos",
+        "hero GitHub statistics",
+    )
+    with open("hero.svg", "w", encoding="utf-8", newline="\\n") as destination:
+        destination.write(hero)
+
+    # Legacy banners are still directly accessible, so keep their metrics current too.
+    for banner_path in ("tasfiya-banner.svg", "tasfiya-banner-light.svg"):
+        with open(banner_path, encoding="utf-8") as source:
+            banner = source.read()
+        values = {"118": public_repos, "258": following, "398": total_stars, "538": followers}
+        for x, value in values.items():
+            banner = replace_text_node(
+                banner,
+                rf'<text class="st" x="{x}" y="640"[^>]*>.*?</text>',
+                value,
+                f"{banner_path} metric x={x}",
+            )
+        banner, count = re.subn(
+            r'(<text x="258" y="612"[^>]*>).*?(</text>)',
+            r'\\g<1>Following\\g<2>',
+            banner,
+            count=1,
+            flags=re.DOTALL,
+        )
+        if count != 1:
+            raise RuntimeError(f"Could not find Following label in {banner_path}")
+        with open(banner_path, "w", encoding="utf-8", newline="\\n") as destination:
+            destination.write(banner)
+
+
 def main() -> None:
     user, repos = fetch_profile_data()
     required = ("public_repos", "followers", "following")
@@ -138,6 +202,32 @@ def main() -> None:
     for x, value in metrics.items():
         svg = update_metric(svg, x, value)
     svg = update_repo_rows(svg, repos)
+    followers = int(user["followers"])
+    following = int(user["following"])
+    svg = replace_text_node(
+        svg,
+        r'<text class="sg" x="936" y="322"[^>]*>.*?</text>',
+        followers,
+        "dashboard community followers",
+    )
+    svg = replace_text_node(
+        svg,
+        r'<text class="sg" x="1074" y="322"[^>]*>.*?</text>',
+        following,
+        "dashboard community following",
+    )
+    svg = replace_text_node(
+        svg,
+        r'<text class="jb" x="936" y="342"[^>]*>.*?</text>',
+        "GITHUB FOLLOWERS",
+        "dashboard followers label",
+    )
+    svg = replace_text_node(
+        svg,
+        r'<text class="jb" x="1074" y="342"[^>]*>.*?</text>',
+        "GITHUB FOLLOWING",
+        "dashboard following label",
+    )
     updated = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     svg, count = re.subn(
         r'<text class="jb" x="442" y="494" font-size="10" fill="#8d93ab" opacity="\.75">.*?</text>',
@@ -151,7 +241,9 @@ def main() -> None:
         with open(SVG_PATH, "w", encoding="utf-8", newline="\n") as destination:
             destination.write(svg)
 
-    # Change the image URL on every run to bypass GitHub's rendered-image cache.
+    update_secondary_svgs(user, total_stars)
+
+    # Change the image URLs on every run to bypass GitHub's rendered-image cache.
     cache_buster = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
     with open(README_PATH, encoding="utf-8") as source:
         readme = source.read()

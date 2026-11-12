@@ -165,7 +165,7 @@ text{font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace}
   <line x1="328" y1="598" x2="328" y2="640" class="sep"/>
   <line x1="468" y1="598" x2="468" y2="640" class="sep"/>
   <text x="118" y="612" text-anchor="middle" font-size="11.5" fill="#6e7781">📦 Repos</text>
-  <text x="258" y="612" text-anchor="middle" font-size="11.5" fill="#6e7781">💻 Commits</text>
+  <text x="258" y="612" text-anchor="middle" font-size="11.5" fill="#6e7781">Following</text>
   <text x="398" y="612" text-anchor="middle" font-size="11.5" fill="#6e7781">⭐ Stars</text>
   <text x="538" y="612" text-anchor="middle" font-size="11.5" fill="#6e7781">👥 Followers</text>
 </g>
