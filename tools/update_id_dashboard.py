@@ -187,13 +187,10 @@ def update_secondary_stats(metrics: dict) -> None:
     for old_label, (new_label, value) in values.items():
         label_node = find_text(root, old_label)
         label_node.text = new_label
-        row = next((parent for parent in root.iter() if label_node in list(parent)), None)
-        if row is None:
-            raise RuntimeError(f"Could not locate stats row for {old_label}")
-        value_nodes = [node for node in list(row) if node.tag == f"{SVG}text" and node is not label_node]
-        if len(value_nodes) != 1:
-            raise RuntimeError(f"Expected one value node in stats row {old_label}")
-        value_nodes[0].text = str(value)
+        value_node = find_node(
+            root, "text", x="316", y=label_node.get("y", "")
+        )
+        value_node.text = str(value)
     write_svg("tasfiya-stats.svg", root)
 
     trophy = parse_svg("tasfiya-trophies.svg")
