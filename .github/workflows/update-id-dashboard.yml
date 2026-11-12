@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - "tools/update_id_dashboard.py"
+      - "tests/**"
       - ".github/workflows/update-id-dashboard.yml"
 
 concurrency:
@@ -31,6 +32,9 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Run updater unit tests
+        run: python -m unittest discover -s tests -v
+
       - name: Fetch GitHub data and update dashboard
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -41,11 +45,23 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add profile-dashboard.svg hero.svg tasfiya-banner.svg tasfiya-banner-light.svg README.md
+          git add profile-dashboard.svg hero.svg tasfiya-banner.svg tasfiya-banner-light.svg tasfiya-stats.svg tasfiya-trophies.svg tasfiya-langs.svg tasfiya-lanyard.svg assets/public-project-atlas.svg README.md
           if git diff --cached --quiet; then
-            echo "Dashboard is already up to date."
-          else
-            git commit -m "Update live GitHub dashboard data"
-            git pull --rebase origin main
-            git push origin HEAD:main
+            echo "Profile assets are already up to date."
+            exit 0
           fi
+
+          git commit -m "Update live GitHub profile metrics"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              echo "Profile metrics published successfully."
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying against latest main."
+            git rebase --abort || true
+            sleep $((attempt * 2))
+          done
+          echo "Could not publish profile metrics after 5 attempts."
+          exit 1
