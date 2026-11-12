@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh the GitHub-derived metrics in profile-dashboard.svg."""
+"""Refresh live GitHub profile graphics from the public GitHub REST API."""
 
 from __future__ import annotations
 
@@ -7,6 +7,8 @@ import json
 import os
 import re
 import sys
+import xml.etree.ElementTree as ET
+from collections import Counter
 from datetime import datetime, timezone
 from html import escape
 from urllib.error import HTTPError, URLError
@@ -15,8 +17,10 @@ from urllib.request import Request, urlopen
 
 USERNAME = os.environ.get("GITHUB_USERNAME", "Quincunx33")
 API_BASE = os.environ.get("GITHUB_API_URL", "https://api.github.com").rstrip("/")
-SVG_PATH = "profile-dashboard.svg"
-README_PATH = "README.md"
+SVG_NS = "http://www.w3.org/2000/svg"
+ET.register_namespace("", SVG_NS)
+SVG = f"{{{SVG_NS}}}"
+PALETTE = ["#ff7a59", "#7db8ff", "#c084fc", "#fde047", "#4ade80", "#22d3ee"]
 
 
 def get_json(url: str) -> object:
@@ -40,7 +44,6 @@ def fetch_profile_data() -> tuple[dict, list[dict]]:
     user = get_json(f"{API_BASE}/users/{USERNAME}")
     if not isinstance(user, dict):
         raise RuntimeError("GitHub API returned an unexpected user profile response")
-
     repos: list[dict] = []
     page = 1
     while True:
@@ -55,130 +58,224 @@ def fetch_profile_data() -> tuple[dict, list[dict]]:
     return user, repos
 
 
-def update_metric(svg: str, x: str, value: int) -> str:
-    pattern = re.compile(
-        rf'<text class="sg" x="{re.escape(x)}" y="188"[^>]*>.*?</text>', re.DOTALL
+def calculate_metrics(user: dict, repos: list[dict]) -> dict:
+    originals = [repo for repo in repos if not repo.get("fork", False)]
+    return {
+        "public_repos": int(user["public_repos"]),
+        "stars": sum(int(repo.get("stargazers_count", 0)) for repo in originals),
+        "followers": int(user["followers"]),
+        "following": int(user["following"]),
+        "original_repos": originals,
+        "fork_count": len(repos) - len(originals),
+    }
+
+
+def aggregate_language_bytes(repos: list[dict], get_languages=get_json) -> Counter:
+    totals: Counter = Counter()
+    for repo in repos:
+        if repo.get("fork", False):
+            continue
+        url = f"{API_BASE}/repos/{USERNAME}/{repo['name']}/languages"
+        languages = get_languages(url)
+        if isinstance(languages, dict):
+            for language, byte_count in languages.items():
+                totals[str(language)] += int(byte_count)
+    return totals
+
+
+def parse_svg(path: str) -> ET.Element:
+    try:
+        return ET.parse(path).getroot()
+    except (ET.ParseError, OSError) as exc:
+        raise RuntimeError(f"Could not parse SVG {path}: {exc}") from exc
+
+
+def write_svg(path: str, root: ET.Element) -> None:
+    ET.ElementTree(root).write(path, encoding="unicode", xml_declaration=True)
+
+
+def text_nodes(root: ET.Element):
+    return [node for node in root.iter(f"{SVG}text")]
+
+
+def find_text(root: ET.Element, value: str) -> ET.Element:
+    matches = [node for node in text_nodes(root) if "".join(node.itertext()).strip() == value]
+    if len(matches) != 1:
+        raise RuntimeError(f"Expected one SVG text node containing {value!r}; found {len(matches)}")
+    return matches[0]
+
+
+def find_node(root: ET.Element, tag: str, **attrs: str) -> ET.Element:
+    matches = [
+        node for node in root.iter(f"{SVG}{tag}")
+        if all(node.get(key) == value for key, value in attrs.items())
+    ]
+    if len(matches) != 1:
+        raise RuntimeError(f"Expected one SVG <{tag}> with {attrs}; found {len(matches)}")
+    return matches[0]
+
+
+def update_dashboard(metrics: dict, updated: str) -> None:
+    root = parse_svg("profile-dashboard.svg")
+    for x, value in {
+        "438.0": metrics["public_repos"],
+        "646.5": metrics["stars"],
+        "855.0": metrics["followers"],
+        "1063.5": metrics["following"],
+    }.items():
+        find_node(root, "text", **{"class": "sg", "x": x, "y": "188"}).text = str(value)
+
+    originals = sorted(
+        metrics["original_repos"],
+        key=lambda repo: (int(repo.get("stargazers_count", 0)), repo.get("name", "").lower()),
+        reverse=True,
+    )[:5]
+    max_stars = max((int(repo.get("stargazers_count", 0)) for repo in originals), default=0)
+    for index, y in enumerate((311, 345, 379, 413, 447)):
+        repo = originals[index] if index < len(originals) else None
+        name = str(repo.get("name", "—")) if repo else "—"
+        if len(name) > 23:
+            name = name[:20] + "…"
+        stars = int(repo.get("stargazers_count", 0)) if repo else 0
+        find_node(root, "text", **{"class": "jb", "x": "442", "y": str(y)}).text = name
+        star_nodes = [
+            node for node in text_nodes(root)
+            if node.get("class") == "jbb" and node.get("y") == str(y)
+        ]
+        if len(star_nodes) != 1:
+            raise RuntimeError(f"Expected one star-count text at y={y}")
+        star_nodes[0].text = str(stars)
+        bar_y = str(y - 11)
+        bar = find_node(root, "rect", x="592", y=bar_y)
+        bar.set("width", str(round(210 * stars / max_stars, 1) if max_stars else 0))
+
+    find_node(root, "text", **{"class": "sg", "x": "936", "y": "322"}).text = str(metrics["followers"])
+    find_node(root, "text", **{"class": "sg", "x": "1074", "y": "322"}).text = str(metrics["following"])
+    find_node(root, "text", **{"class": "jb", "x": "936", "y": "342"}).text = "GITHUB FOLLOWERS"
+    find_node(root, "text", **{"class": "jb", "x": "1074", "y": "342"}).text = "GITHUB FOLLOWING"
+    find_node(root, "text", **{"class": "jb", "x": "442", "y": "494"}).text = f"Live GitHub data · updated {updated}"
+    write_svg("profile-dashboard.svg", root)
+
+
+def update_secondary_stats(metrics: dict) -> None:
+    root = parse_svg("tasfiya-stats.svg")
+    values = {
+        "Total Stars Earned:": metrics["stars"],
+        "Following:": metrics["following"],
+        "Public Repos:": metrics["public_repos"],
+        "Followers:": metrics["followers"],
+    }
+    for label, value in values.items():
+        label_node = find_text(root, label)
+        row = next((parent for parent in root.iter() if label_node in list(parent)), None)
+        if row is None:
+            raise RuntimeError(f"Could not locate stats row for {label}")
+        value_nodes = [node for node in list(row) if node.tag == f"{SVG}text" and node is not label_node]
+        if len(value_nodes) != 1:
+            raise RuntimeError(f"Expected one value node in stats row {label}")
+        value_nodes[0].text = str(value)
+    write_svg("tasfiya-stats.svg", root)
+
+    trophy = parse_svg("tasfiya-trophies.svg")
+    trophy_values = {
+        "Stars 650": f"Stars {metrics['stars']}",
+        "Followers 41": f"Followers {metrics['followers']}",
+        "Commits 42": f"Following {metrics['following']}",
+        "Repos 42": f"Repos {metrics['public_repos']}",
+    }
+    for old, new in trophy_values.items():
+        find_text(trophy, old).text = new
+    write_svg("tasfiya-trophies.svg", trophy)
+
+
+def render_languages_svg(language_bytes: Counter) -> str:
+    total = sum(language_bytes.values())
+    top = language_bytes.most_common(4)
+    if not top or total <= 0:
+        top = [("No language data", 1)]
+        total = 1
+    rows = []
+    stack = []
+    x = 20.0
+    for index, (name, amount) in enumerate(top):
+        color = PALETTE[index % len(PALETTE)]
+        percent = amount * 100 / total
+        width = 268 * percent / 100
+        y = 96 + index * 42
+        rows.append(
+            f'<g class="row" style="animation-delay:{0.45 + index * 0.2:.2f}s">'
+            f'<circle cx="26" cy="{y - 5}" r="5" fill="{color}"/>'
+            f'<text x="40" y="{y}" font-size="13" fill="#e6edf3" font-weight="bold">{escape(name)}</text>'
+            f'<text x="396" y="{y}" text-anchor="end" font-size="13" fill="{color}" font-weight="bold">{percent:.1f}%</text>'
+            f'<rect x="40" y="{y + 8}" width="268" height="9" rx="4.5" fill="#241740"/>'
+            f'<rect class="bar" x="40" y="{y + 8}" width="{width:.1f}" height="9" rx="4.5" fill="{color}"/>'
+            f'</g>'
+        )
+        stack.append(f'<rect x="{x:.1f}" y="58" width="{380 * percent / 100:.1f}" height="11" fill="{color}"/>')
+        x += 380 * percent / 100
+    return (
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 282" width="420" height="282" role="img" aria-label="Top languages by source bytes across original public repositories">'
+        '<defs><style>text{font-family:SFMono-Regular,Consolas,monospace}.row{opacity:0;animation:fadeUp .5s ease forwards}@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}</style>'
+        '<linearGradient id="tg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ff7eb6"/><stop offset="100%" stop-color="#c084fc"/></linearGradient></defs>'
+        '<rect x="1" y="1" width="418" height="280" rx="14" fill="#170e28" stroke="url(#tg)" stroke-width="1.5"/>'
+        '<text x="20" y="34" font-size="16" font-weight="bold" fill="url(#tg)">📊 Top Languages · live</text>'
+        '<g>' + ''.join(stack) + '</g>' + ''.join(rows) + '</svg>'
     )
-    matches = list(pattern.finditer(svg))
-    if not matches:
-        raise RuntimeError(f"Could not find SVG metric at x={x}")
-    replacement = (
-        f'<text class="sg" x="{x}" y="188" font-size="36" '
-        f'fill="#eceef6">{value}</text>'
+
+
+def render_project_atlas(metrics: dict) -> str:
+    counts = Counter(repo.get("language") or "Other" for repo in metrics["original_repos"])
+    top = counts.most_common(6)
+    max_count = max((count for _, count in top), default=1)
+    rows = []
+    colors = ["#3178C6", "#F7DF1E", "#3776AB", "#E34F26", "#8B5CF6", "#00599C"]
+    for index, (language, count) in enumerate(top):
+        y = 192 + index * 28
+        color = colors[index % len(colors)]
+        rows.append(
+            f'<circle cx="52" cy="{y - 5}" r="6" fill="{color}"/>'
+            f'<text x="70" y="{y}" fill="#CBD5E1" font-family="Inter,Arial,sans-serif" font-size="15px" font-weight="600">{escape(language)}</text>'
+            f'<text x="180" y="{y}" fill="#8EA3BF" font-family="Inter,Arial,sans-serif" font-size="13px">{count} repos</text>'
+            f'<rect x="285" y="{y - 17}" width="330" height="12" rx="6" fill="#1C2B45"/>'
+            f'<rect x="285" y="{y - 17}" width="{330 * count / max_count:.1f}" height="12" rx="6" fill="{color}"/>'
+        )
+    total = len(metrics["original_repos"])
+    return (
+        '<svg xmlns="http://www.w3.org/2000/svg" width="760" height="360" viewBox="0 0 760 360">'
+        '<rect width="100%" height="100%" rx="20" fill="#0B1220"/><rect x="20" y="20" width="720" height="320" rx="16" fill="#111C31" stroke="#243653"/>'
+        '<text x="48" y="70" fill="#00D9FF" font-family="Inter,Arial,sans-serif" font-size="14px" font-weight="700">PUBLIC PROJECT ATLAS · LIVE</text>'
+        f'<text x="48" y="112" fill="#CBD5E1" font-family="Inter,Arial,sans-serif" font-size="27px" font-weight="700">{total} original public repositories</text>'
+        '<text x="48" y="140" fill="#8EA3BF" font-family="Inter,Arial,sans-serif" font-size="15px">Language distribution by repository metadata · forks excluded</text>'
+        f'<circle cx="620" cy="100" r="48" fill="none" stroke="#243653" stroke-width="12"/><circle cx="620" cy="100" r="48" fill="none" stroke="#00D9FF" stroke-width="12" stroke-dasharray="{min(302, total * 8)} 302" transform="rotate(-90 620 100)"/>'
+        f'<text x="620" y="107" fill="#CBD5E1" font-family="Inter,Arial,sans-serif" font-size="22px" font-weight="700" text-anchor="middle">{total}</text>'
+        + ''.join(rows) + '</svg>'
     )
-    pieces = []
-    cursor = 0
-    for index, match in enumerate(matches):
-        pieces.append(svg[cursor : match.start()])
-        pieces.append(replacement if index == 0 else "")
-        cursor = match.end()
-    pieces.append(svg[cursor:])
-    return "".join(pieces)
 
 
-def update_repo_rows(svg: str, repos: list[dict]) -> str:
-    top = sorted(repos, key=lambda repo: (repo.get("stargazers_count", 0), repo.get("name", "").lower()), reverse=True)[:5]
-    row_y = [311, 345, 379, 413, 447]
-    max_stars = max((int(repo.get("stargazers_count", 0)) for repo in top), default=0)
-    for index, y in enumerate(row_y):
-        if index < len(top):
-            name = str(top[index].get("name", "—"))
-            # Keep unusually long repository names from overrunning the fixed-width card.
-            if len(name) > 23:
-                name = name[:20] + "…"
-            stars = int(top[index].get("stargazers_count", 0))
-        else:
-            name, stars = "—", 0
-        name_pattern = re.compile(
-            rf'(<text class="jb" x="442" y="{y}" font-size="12" fill="#8d93ab">).*?(</text>)',
-            re.DOTALL,
-        )
-        svg, count = name_pattern.subn(lambda m: m.group(1) + escape(name) + m.group(2), svg, count=1)
+def update_lanyard_handle() -> None:
+    path = "tasfiya-lanyard.svg"
+    with open(path, encoding="utf-8") as source:
+        svg = source.read()
+    old = "@Tasfiyamittal0920"
+    new = "@tasfiya__tabassum__"
+    if old not in svg:
+        raise RuntimeError("Expected outdated lanyard handle was not found")
+    with open(path, "w", encoding="utf-8", newline="\n") as destination:
+        destination.write(svg.replace(old, new, 1))
+
+
+def update_readme_cache_buster() -> None:
+    path = "README.md"
+    with open(path, encoding="utf-8") as source:
+        readme = source.read()
+    cache_buster = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
+    for filename in ("profile-dashboard.svg", "hero.svg"):
+        pattern = rf'src="\./{re.escape(filename)}(?:\?v=[^"]*)?"'
+        readme, count = re.subn(pattern, f'src="./{filename}?v={cache_buster}"', readme, count=1)
         if count != 1:
-            raise RuntimeError(f"Could not find repository-name row at y={y}")
-        star_pattern = re.compile(
-            rf'(<text class="jbb" x="[^"]+" y="{y}" font-size="12" fill="#eceef6"[^>]*>).*?(</text>)',
-            re.DOTALL,
-        )
-        svg, count = star_pattern.subn(lambda m: m.group(1) + str(stars) + m.group(2), svg, count=1)
-        if count != 1:
-            raise RuntimeError(f"Could not find star-count row at y={y}")
-        bar_y = y - 11
-        bar_width = round(210 * stars / max_stars, 1) if max_stars else 0
-        bar_pattern = re.compile(
-            rf'(<rect x="592" y="{bar_y}" )width="[^"]+"([^>]*fill="url\(#barG\)")>.*?</rect>',
-            re.DOTALL,
-        )
-        svg, count = bar_pattern.subn(
-            lambda m: f'{m.group(1)}width="{bar_width}"{m.group(2)}></rect>', svg, count=1
-        )
-        if count != 1:
-            raise RuntimeError(f"Could not find star bar at y={bar_y}")
-    return svg
-
-
-
-def replace_text_node(svg: str, pattern: str, value: object, label: str) -> str:
-    """Replace the text content of exactly one SVG text node."""
-    svg, count = re.subn(
-        pattern,
-        lambda match: re.sub(
-            r">(.*?)</text>",
-            lambda inner: ">" + escape(str(value)) + "</text>",
-            match.group(0),
-            count=1,
-            flags=re.DOTALL,
-        ),
-        svg,
-        count=1,
-        flags=re.DOTALL,
-    )
-    if count != 1:
-        raise RuntimeError(f"Could not find SVG text node: {label}")
-    return svg
-
-
-def update_secondary_svgs(user: dict, total_stars: int) -> None:
-    """Keep every shipped profile graphic on the same GitHub API metrics."""
-    followers = int(user["followers"])
-    following = int(user["following"])
-    public_repos = int(user["public_repos"])
-
-    # Hero headline statistics.
-    with open("hero.svg", encoding="utf-8") as source:
-        hero = source.read()
-    hero = replace_text_node(
-        hero,
-        r'<text class="jb" x="408" y="458"[^>]*>.*?</text>',
-        f"{total_stars} stars · {public_repos} repos",
-        "hero GitHub statistics",
-    )
-    with open("hero.svg", "w", encoding="utf-8", newline="\n") as destination:
-        destination.write(hero)
-
-    # Legacy banners are still directly accessible, so keep their metrics current too.
-    for banner_path in ("tasfiya-banner.svg", "tasfiya-banner-light.svg"):
-        with open(banner_path, encoding="utf-8") as source:
-            banner = source.read()
-        values = {"118": public_repos, "258": following, "398": total_stars, "538": followers}
-        for x, value in values.items():
-            banner = replace_text_node(
-                banner,
-                rf'<text class="st" x="{x}" y="640"[^>]*>.*?</text>',
-                value,
-                f"{banner_path} metric x={x}",
-            )
-        banner, count = re.subn(
-            r'(<text x="258" y="612"[^>]*>).*?(</text>)',
-            r'\g<1>Following\g<2>',
-            banner,
-            count=1,
-            flags=re.DOTALL,
-        )
-        if count != 1:
-            raise RuntimeError(f"Could not find Following label in {banner_path}")
-        with open(banner_path, "w", encoding="utf-8", newline="\n") as destination:
-            destination.write(banner)
+            raise RuntimeError(f"Could not find {filename} image reference in README.md")
+    with open(path, "w", encoding="utf-8", newline="\n") as destination:
+        destination.write(readme)
 
 
 def main() -> None:
@@ -187,92 +284,23 @@ def main() -> None:
     missing = [key for key in required if key not in user]
     if missing:
         raise RuntimeError(f"GitHub API response is missing expected fields: {', '.join(missing)}")
-
-    # Forks are not original projects; exclude them from popularity totals and rankings.
-    original_repos = [repo for repo in repos if not repo.get("fork", False)]
-    total_stars = sum(int(repo.get("stargazers_count", 0)) for repo in original_repos)
-    metrics = {
-        "438.0": int(user["public_repos"]),
-        "646.5": total_stars,
-        "855.0": int(user["followers"]),
-        "1063.5": int(user["following"]),
-    }
-
-    with open(SVG_PATH, encoding="utf-8") as source:
-        svg = source.read()
-    original_svg = svg
-    for x, value in metrics.items():
-        svg = update_metric(svg, x, value)
-    svg = update_repo_rows(svg, original_repos)
-    followers = int(user["followers"])
-    following = int(user["following"])
-    svg = replace_text_node(
-        svg,
-        r'<text class="sg" x="936" y="322"[^>]*>.*?</text>',
-        followers,
-        "dashboard community followers",
-    )
-    svg = replace_text_node(
-        svg,
-        r'<text class="sg" x="1074" y="322"[^>]*>.*?</text>',
-        following,
-        "dashboard community following",
-    )
-    svg = replace_text_node(
-        svg,
-        r'<text class="jb" x="936" y="342"[^>]*>.*?</text>',
-        "GITHUB FOLLOWERS",
-        "dashboard followers label",
-    )
-    svg = replace_text_node(
-        svg,
-        r'<text class="jb" x="1074" y="342"[^>]*>.*?</text>',
-        "GITHUB FOLLOWING",
-        "dashboard following label",
-    )
+    metrics = calculate_metrics(user, repos)
     updated = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    svg, count = re.subn(
-        r'<text class="jb" x="442" y="494" font-size="10" fill="#8d93ab" opacity="\.75">.*?</text>',
-        f'<text class="jb" x="442" y="494" font-size="10" fill="#8d93ab" opacity=".75">Live GitHub data · updated {updated}</text>',
-        svg,
-        count=1,
-    )
-    if count != 1:
-        raise RuntimeError("Could not find dashboard update timestamp label")
-    if svg != original_svg:
-        with open(SVG_PATH, "w", encoding="utf-8", newline="\n") as destination:
-            destination.write(svg)
-
-    update_secondary_svgs(user, total_stars)
-
-    # Change the image URLs on every run to bypass GitHub's rendered-image cache.
-    cache_buster = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
-    with open(README_PATH, encoding="utf-8") as source:
-        readme = source.read()
-    readme, count = re.subn(
-        r'src="\./profile-dashboard\.svg(?:\?v=[^"]*)?"',
-        f'src="./profile-dashboard.svg?v={cache_buster}"',
-        readme,
-        count=1,
-    )
-    if count != 1:
-        raise RuntimeError("Could not find profile-dashboard.svg image reference in README.md")
-    readme, count = re.subn(
-        r'src="\./hero\.svg(?:\?v=[^"]*)?"',
-        f'src="./hero.svg?v={cache_buster}"',
-        readme,
-        count=1,
-    )
-    if count != 1:
-        raise RuntimeError("Could not find hero.svg image reference in README.md")
-    with open(README_PATH, "w", encoding="utf-8", newline="\n") as destination:
-        destination.write(readme)
-
+    update_dashboard(metrics, updated)
+    update_secondary_stats(metrics)
+    languages = aggregate_language_bytes(metrics["original_repos"])
+    with open("tasfiya-langs.svg", "w", encoding="utf-8", newline="\n") as output:
+        output.write(render_languages_svg(languages))
+    with open("assets/public-project-atlas.svg", "w", encoding="utf-8", newline="\n") as output:
+        output.write(render_project_atlas(metrics))
+    update_lanyard_handle()
+    update_readme_cache_buster()
     print(
-        "Updated GitHub dashboard: "
-        f"public repos={metrics['438.0']}, total stars={total_stars}, "
-        f"followers={metrics['855.0']}, following={metrics['1063.5']}; "
-        f"top original repos={min(len(original_repos), 5)}; forks excluded={len(repos) - len(original_repos)}"
+        "Updated live profile assets: "
+        f"public repos={metrics['public_repos']}, stars={metrics['stars']}, "
+        f"followers={metrics['followers']}, following={metrics['following']}, "
+        f"original repos={len(metrics['original_repos'])}, forks excluded={metrics['fork_count']}, "
+        f"languages={len(languages)}"
     )
 
 
