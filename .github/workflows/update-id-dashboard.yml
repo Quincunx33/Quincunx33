@@ -54,13 +54,16 @@ jobs:
           git commit -m "Update live GitHub profile metrics"
           for attempt in 1 2 3 4 5; do
             git fetch origin main
-            git rebase origin/main
-            if git push origin HEAD:main; then
-              echo "Profile metrics published successfully."
-              exit 0
+            if git rebase origin/main; then
+              if git push origin HEAD:main; then
+                echo "Profile metrics published successfully."
+                exit 0
+              fi
+            else
+              echo "Rebase attempt $attempt conflicted; aborting before retry."
+              git rebase --abort || true
             fi
             echo "Push attempt $attempt failed; retrying against latest main."
-            git rebase --abort || true
             sleep $((attempt * 2))
           done
           echo "Could not publish profile metrics after 5 attempts."
