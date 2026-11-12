@@ -153,7 +153,7 @@ def update_secondary_svgs(user: dict, total_stars: int) -> None:
         f"{total_stars} stars &#183; {public_repos} repos",
         "hero GitHub statistics",
     )
-    with open("hero.svg", "w", encoding="utf-8", newline="\\n") as destination:
+    with open("hero.svg", "w", encoding="utf-8", newline="\n") as destination:
         destination.write(hero)
 
     # Legacy banners are still directly accessible, so keep their metrics current too.
@@ -170,14 +170,14 @@ def update_secondary_svgs(user: dict, total_stars: int) -> None:
             )
         banner, count = re.subn(
             r'(<text x="258" y="612"[^>]*>).*?(</text>)',
-            r'\\g<1>Following\\g<2>',
+            r'\g<1>Following\g<2>',
             banner,
             count=1,
             flags=re.DOTALL,
         )
         if count != 1:
             raise RuntimeError(f"Could not find Following label in {banner_path}")
-        with open(banner_path, "w", encoding="utf-8", newline="\\n") as destination:
+        with open(banner_path, "w", encoding="utf-8", newline="\n") as destination:
             destination.write(banner)
 
 
