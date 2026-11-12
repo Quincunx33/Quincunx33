@@ -2,8 +2,6 @@
 
 <img src="./hero-khulna.svg" alt="Hi, I am Tasfiya Tabassum — Full-Stack Developer" width="100%"/>
 
-<img src="https://viscount-inzm9sse.manus.space/api/v1/counter/quincunx33.svg?v=86beaf2" alt="GitHub profile views"/>
-
 <img src="./about-life.svg?v=1" alt="What I build and life beyond code" width="100%"/>
 
 <img src="./tech-stack.svg?v=2" alt="Technology stack" width="100%"/>
@@ -15,6 +13,10 @@
 <h1 align="center">Tasfia Tabassum</h1>
 <p align="center">
   <img src="https://img.shields.io/badge/Location-Khulna%2C_Bangladesh-22d3ee?style=for-the-badge&amp;labelColor=171a2c" alt="Based in Khulna, Bangladesh"/>
+</p>
+
+<p align="center">
+  <img src="https://viscount-inzm9sse.manus.space/api/v1/counter/quincunx33.svg?v=86beaf2" alt="GitHub profile views"/>
 </p>
 
 ## Featured builds
