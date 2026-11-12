@@ -33,7 +33,7 @@
 
 ## GitHub contribution city
 
-*Every commit builds another tower — refreshed automatically every day.*
+*A new contribution tower appears with the daily refresh.*
 
 <img src="./profile-3d-contrib/profile-night-view.svg?v=1" alt="3D contribution city" width="100%"/>
 
