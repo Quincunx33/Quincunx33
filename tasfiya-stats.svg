@@ -27,7 +27,7 @@ text{font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace}
   <g class="row" style="animation-delay:0.50s">
     <text x="24" y="74" font-size="14">⭐</text>
     <text x="52" y="74" font-size="13.5" fill="#c9d1d9">Total Stars Earned:</text>
-    <text x="316" y="74" text-anchor="end" font-size="14" font-weight="bold" fill="#fde047">970</text>
+    <text x="316" y="74" text-anchor="end" font-size="14" font-weight="bold" fill="#fde047">972</text>
   </g>
   <g class="row" style="animation-delay:0.72s">
     <text x="24" y="105" font-size="14">💻</text>
