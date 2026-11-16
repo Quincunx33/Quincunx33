@@ -1,7 +1,7 @@
 <div align="center">
 
 <p>
-  <img src="./visitor-counter-preview.svg?v=1" alt="Glassmorphism visitor counter preview"/>
+  <img src="https://viscount-inzm9sse.manus.space/api/v1/counter/quincunx33.svg?theme=aurora&amp;size=large&amp;label=Profile%20Views&amp;v=20261117" alt="Live GitHub profile views"/>
 </p>
 
 <img src="./hero.svg?v=20261116110914" alt="Hi, I am Tasfiya Tabassum — Full-Stack Developer" width="100%"/>
