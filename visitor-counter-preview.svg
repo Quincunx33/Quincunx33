@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="190" viewBox="0 0 720 190" role="img" aria-labelledby="title desc">
+<title id="title">Profile views preview</title><desc id="desc">Glassmorphism visitor counter preview. Demo count only.</desc>
+<defs>
+ <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#303944" stop-opacity=".94"/><stop offset=".5" stop-color="#111923" stop-opacity=".98"/><stop offset="1" stop-color="#050a12"/></linearGradient>
+ <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e8fff9" stop-opacity=".9"/><stop offset=".5" stop-color="#8debdc" stop-opacity=".24"/><stop offset="1" stop-color="#b9a2ff" stop-opacity=".6"/></linearGradient>
+ <linearGradient id="mint"><stop stop-color="#48f0cb"/><stop offset="1" stop-color="#8af5c8"/></linearGradient>
+ <linearGradient id="track" x2="0" y2="1"><stop stop-color="#0a111b"/><stop offset=".5" stop-color="#26313d"/><stop offset="1" stop-color="#080d15"/></linearGradient>
+ <filter id="blur"><feGaussianBlur stdDeviation="13"/></filter>
+</defs>
+<rect width="720" height="190" rx="18" fill="#030711"/>
+<circle cx="105" cy="55" r="35" fill="#4bf0ca" opacity=".8" filter="url(#blur)"/><circle cx="105" cy="55" r="26" fill="#4bf0ca"/>
+<circle cx="620" cy="53" r="31" fill="#b48aff" opacity=".8" filter="url(#blur)"/><circle cx="620" cy="53" r="22" fill="#b48aff"/>
+<circle cx="558" cy="151" r="34" fill="#36caff" opacity=".8" filter="url(#blur)"/><circle cx="558" cy="151" r="25" fill="#36caff"/>
+<rect x="68" y="37" width="584" height="120" rx="36" fill="#50ebd2" opacity=".18" filter="url(#blur)"/>
+<rect x="73" y="28" width="574" height="126" rx="35" fill="url(#glass)" stroke="url(#edge)" stroke-width="1.5"/>
+<path d="M110 30 Q360 16 610 30" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.4"/>
+<text x="111" y="68" fill="#a9b8c7" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="2.6">PROFILE VIEWS</text>
+<text x="108" y="117" fill="#f5fbff" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="750" letter-spacing="1.2">12,840</text>
+<text x="286" y="115" fill="#8ca0b2" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="1.6">VISITORS</text>
+<rect x="481" y="61" width="119" height="28" rx="14" fill="#10251f" stroke="#48eac6" stroke-opacity=".5"/>
+<circle cx="497" cy="75" r="4" fill="#58f0c8"/><text x="509" y="79" fill="#8df3d7" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700" letter-spacing="1">PREVIEW</text>
+<rect x="110" y="132" width="490" height="7" rx="4" fill="url(#track)" stroke="#8393a3" stroke-opacity=".45"/>
+<rect x="112" y="133" width="302" height="5" rx="3" fill="url(#mint)"/>
+</svg>
