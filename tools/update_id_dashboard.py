@@ -286,6 +286,25 @@ def render_project_atlas(metrics: dict) -> str:
     )
 
 
+def validate_lanyard_identity(svg: str) -> None:
+    """Fail the profile update if the lanyard contains a mismatched identity."""
+    root = ET.fromstring(svg)
+    name_nodes = [
+        node for node in root.iter(f"{SVG}text")
+        if node.attrib.get("class") == "lanyard-name"
+    ]
+    handle_nodes = [
+        node for node in root.iter(f"{SVG}text")
+        if (node.text or "").strip() == "@tasfiya__tabassum__"
+    ]
+    if len(name_nodes) != 1 or (name_nodes[0].text or "").strip() != "Tasfia Tabassum":
+        raise RuntimeError("Lanyard identity check failed: expected exactly one 'Tasfia Tabassum' name")
+    if len(handle_nodes) != 1:
+        raise RuntimeError("Lanyard identity check failed: expected exactly one current GitHub handle")
+    if re.search(r"Megha|Mittal|Tasfiyamittal0920", svg, flags=re.IGNORECASE):
+        raise RuntimeError("Lanyard identity check failed: a stale identity was found")
+
+
 def update_lanyard_handle() -> None:
     path = "tasfiya-lanyard.svg"
     with open(path, encoding="utf-8") as source:
@@ -294,9 +313,8 @@ def update_lanyard_handle() -> None:
     new = "@tasfiya__tabassum__"
     if old in svg:
         svg = svg.replace(old, new, 1)
-    elif new not in svg:
-        raise RuntimeError("Neither the old nor current lanyard handle was found")
-    with open(path, "w", encoding="utf-8", newline="\n") as destination:
+    validate_lanyard_identity(svg)
+    with open(path, "w", encoding="utf-8", newline="\\n") as destination:
         destination.write(svg)
 
 
