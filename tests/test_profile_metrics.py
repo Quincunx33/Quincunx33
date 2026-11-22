@@ -53,8 +53,7 @@ class ProfileMetricsTests(unittest.TestCase):
     def test_checked_in_profile_svgs_are_well_formed(self):
         root = Path(__file__).resolve().parents[1]
         paths = [
-            "profile-dashboard.svg", "hero.svg", "tasfiya-banner.svg",
-            "tasfiya-banner-light.svg", "tasfiya-stats.svg", "tasfiya-trophies.svg",
+            "profile-dashboard.svg", "hero.svg", "tasfiya-stats.svg", "tasfiya-trophies.svg",
             "tasfiya-langs.svg", "tasfiya-lanyard.svg",
             "assets/public-project-atlas.svg", "profile-3d-contrib/profile-night-view.svg",
         ]
