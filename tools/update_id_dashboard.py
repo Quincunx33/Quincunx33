@@ -174,17 +174,6 @@ def update_hero_and_banners(metrics: dict) -> None:
     )
     write_svg("hero.svg", hero)
 
-    for path in ("tasfiya-banner.svg", "tasfiya-banner-light.svg"):
-        root = parse_svg(path)
-        for x, value in {
-            "118": metrics["public_repos"],
-            "258": metrics["following"],
-            "398": metrics["stars"],
-            "538": metrics["followers"],
-        }.items():
-            find_node(root, "text", **{"class": "st", "x": x, "y": "640"}).text = str(value)
-        write_svg(path, root)
-
 
 def update_secondary_stats(metrics: dict) -> None:
     root = parse_svg("tasfiya-stats.svg")
