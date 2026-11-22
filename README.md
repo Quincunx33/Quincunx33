@@ -4,13 +4,13 @@
   <img src="https://viscount-inzm9sse.manus.space/api/v1/counter/quincunx33.svg?theme=aurora&amp;size=large&amp;label=Profile%20Views&amp;v=20261117" alt="Live GitHub profile views"/>
 </p>
 
-<img src="./hero.svg?v=20261122231615" alt="Hi, I am Tasfiya Tabassum — Full-Stack Developer" width="100%"/>
+<img src="./hero.svg?v=20261122233447" alt="Hi, I am Tasfiya Tabassum — Full-Stack Developer" width="100%"/>
 
 <img src="./about-life.svg?v=1" alt="What I build and life beyond code" width="100%"/>
 
 <img src="./tech-stack.svg?v=2" alt="Technology stack" width="100%"/>
 
-<img src="./profile-dashboard.svg?v=20261122231615" alt="Developer ID and dashboard" width="100%"/>
+<img src="./profile-dashboard.svg?v=20261122233447" alt="Developer ID and dashboard" width="100%"/>
 
 <img src="./tasfiya-trophies.svg?v=1" alt="Developer achievement showcase" width="100%"/>
 
