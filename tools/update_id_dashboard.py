@@ -314,7 +314,7 @@ def update_lanyard_handle() -> None:
     if old in svg:
         svg = svg.replace(old, new, 1)
     validate_lanyard_identity(svg)
-    with open(path, "w", encoding="utf-8", newline="\\n") as destination:
+    with open(path, "w", encoding="utf-8", newline="\n") as destination:
         destination.write(svg)
 
 
