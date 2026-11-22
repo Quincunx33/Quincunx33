@@ -50,6 +50,17 @@ class ProfileMetricsTests(unittest.TestCase):
         node.text = "new"
         self.assertEqual(updater.find_text(root, "new").text, "new")
 
+    def test_lanyard_identity_is_correct_and_rejects_stale_identity(self):
+        root = Path(__file__).resolve().parents[1]
+        svg = (root / "tasfiya-lanyard.svg").read_text(encoding="utf-8")
+        updater.validate_lanyard_identity(svg)
+        self.assertIn(">Tasfia Tabassum</text>", svg)
+        self.assertNotRegex(svg, r"Megha|Mittal|Tasfiyamittal0920")
+
+        wrong = svg.replace("Tasfia Tabassum", "Megha Mittal", 1)
+        with self.assertRaisesRegex(RuntimeError, "identity check failed"):
+            updater.validate_lanyard_identity(wrong)
+
     def test_checked_in_profile_svgs_are_well_formed(self):
         root = Path(__file__).resolve().parents[1]
         paths = [
