@@ -1,7 +1,7 @@
 <div align="center">
 
 <p>
-  <img src="https://viscount-inzm9sse.manus.space/api/v1/counter/quincunx33.svg?theme=mono&amp;size=compact&amp;label=views&amp;mode=dark" alt="Live GitHub profile views"/>
+  <img src="https://viscount-inzm9sse.manus.space/api/v1/counter/quincunx33.svg?theme=aurora&amp;size=large&amp;label=Profile%20Views&amp;v=20261117" alt="Live GitHub profile views"/>
 </p>
 
 <img src="./hero.svg?v=20261122233447" alt="Hi, I am Tasfiya Tabassum — Full-Stack Developer" width="100%"/>
