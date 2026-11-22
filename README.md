@@ -12,6 +12,8 @@
 
 <img src="./profile-dashboard.svg?v=20261122231615" alt="Developer ID and dashboard" width="100%"/>
 
+<img src="./tasfiya-trophies.svg?v=1" alt="Developer achievement showcase" width="100%"/>
+
 </div>
 
 <h1 align="center">Tasfia Tabassum</h1>
