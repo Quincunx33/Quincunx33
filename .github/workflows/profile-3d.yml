@@ -4,12 +4,10 @@ on:
   schedule:
     - cron: "0 18 * * *"     # daily
   workflow_dispatch:          # run manually from the Actions tab
-  push:
-    branches: [main]
 
 concurrency:
-  group: profile-3d-${{ github.ref }}
-  cancel-in-progress: true
+  group: profile-assets-${{ github.ref }}
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -19,17 +17,33 @@ jobs:
     runs-on: ubuntu-latest
     name: generate-3d-contribution
     steps:
-      - uses: actions/checkout@v5
-      - uses: yoshi389111/github-profile-3d-contrib@latest
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - uses: yoshi389111/github-profile-3d-contrib@7d95e7d4cdc028dd1e1cbd957d65f35efb12ae39 # v0.9.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          USERNAME: ${{ github.repository_owner }}
+          USERNAME: Quincunx33
+      - name: Keep only the README contribution view
+        run: |
+          find profile-3d-contrib -maxdepth 1 -type f -name '*.svg' ! -name 'profile-night-view.svg' -delete
       - name: Commit & push
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add -A .
+          git add profile-3d-contrib/profile-night-view.svg
           if git commit -m "generated 3d contribution city"; then
-            git pull --rebase origin main
-            git push origin HEAD:main
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              if git rebase origin/main; then
+                if git push origin HEAD:main; then
+                  echo "3D contribution city published."
+                  exit 0
+                fi
+              else
+                git rebase --abort || true
+              fi
+              echo "Push attempt $attempt failed; retrying against latest main."
+              sleep $((attempt * 2))
+            done
+            echo "Could not publish the 3D contribution city after 5 attempts."
+            exit 1
           fi

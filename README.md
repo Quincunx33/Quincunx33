@@ -1,16 +1,18 @@
 <div align="center">
 
 <p>
-  <img src="./visitor-eye.svg" alt="GitHub profile views"/>
+  <img src="https://viscount-inzm9sse.manus.space/api/v1/counter/quincunx33.svg?v=e6b7bed" alt="Live GitHub profile views"/>
 </p>
 
-<img src="./hero-khulna.svg" alt="Hi, I am Tasfiya Tabassum — Full-Stack Developer" width="100%"/>
+<img src="./hero.svg?v=20261122233447" alt="Hi, I am Tasfiya Tabassum — Full-Stack Developer" width="100%"/>
 
 <img src="./about-life.svg?v=1" alt="What I build and life beyond code" width="100%"/>
 
 <img src="./tech-stack.svg?v=2" alt="Technology stack" width="100%"/>
 
-<img src="./profile-dashboard.svg?v=20261111105140" alt="Developer ID and dashboard" width="100%"/>
+<img src="./profile-dashboard.svg?v=20261122233447" alt="Developer ID and dashboard" width="100%"/>
+
+<img src="./tasfiya-trophies.svg?v=1" alt="Developer achievement showcase" width="100%"/>
 
 </div>
 
@@ -33,7 +35,7 @@
 
 ## GitHub contribution city
 
-*Every commit builds another tower — refreshed automatically every day.*
+*A new contribution tower appears with the daily refresh.*
 
 <img src="./profile-3d-contrib/profile-night-view.svg?v=1" alt="3D contribution city" width="100%"/>
 

@@ -8,10 +8,11 @@ on:
     branches: [main]
     paths:
       - "tools/update_id_dashboard.py"
+      - "tests/**"
       - ".github/workflows/update-id-dashboard.yml"
 
 concurrency:
-  group: update-id-dashboard-${{ github.ref }}
+  group: profile-assets-${{ github.ref }}
   cancel-in-progress: false
 
 permissions:
@@ -22,17 +23,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           persist-credentials: true
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.x"
 
-      - name: Refresh profile visitor badge
-        run: curl --fail --silent --show-error --location "https://komarev.com/ghpvc/?username=${{ github.repository_owner }}&label=Profile%20views&color=22d3ee&style=for-the-badge" --output assets/profile-views.svg
+      - name: Run updater unit tests
+        run: python -m unittest discover -s tests -v
 
       - name: Fetch GitHub data and update dashboard
         env:
@@ -44,10 +45,26 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add profile-dashboard.svg assets/profile-views.svg README.md
+          git add profile-dashboard.svg hero.svg tasfiya-stats.svg tasfiya-trophies.svg tasfiya-langs.svg tasfiya-lanyard.svg assets/public-project-atlas.svg README.md
           if git diff --cached --quiet; then
-            echo "Dashboard is already up to date."
-          else
-            git commit -m "Update live GitHub dashboard data"
-            git push origin HEAD:main
+            echo "Profile assets are already up to date."
+            exit 0
           fi
+
+          git commit -m "Update live GitHub profile metrics"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if git rebase origin/main; then
+              if git push origin HEAD:main; then
+                echo "Profile metrics published successfully."
+                exit 0
+              fi
+            else
+              echo "Rebase attempt $attempt conflicted; aborting before retry."
+              git rebase --abort || true
+            fi
+            echo "Push attempt $attempt failed; retrying against latest main."
+            sleep $((attempt * 2))
+          done
+          echo "Could not publish profile metrics after 5 attempts."
+          exit 1
