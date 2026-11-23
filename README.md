@@ -46,6 +46,10 @@
 <a href="mailto:liquiderror600@gmail.com"><img src="https://img.shields.io/badge/Email-f472b6?style=for-the-badge&logo=gmail&logoColor=0d0e16" alt="Email"/></a>
 <a href="https://www.instagram.com/tasfiya__tabassum__/"><img src="https://img.shields.io/badge/Instagram-a78bfa?style=for-the-badge&logo=instagram&logoColor=0d0e16" alt="Instagram"/></a>
 <a href="https://www.facebook.com/taissuuu"><img src="https://img.shields.io/badge/Facebook-34d399?style=for-the-badge&logo=facebook&logoColor=0d0e16" alt="Facebook"/></a>
+<a href="https://discord.gg/jW48hHEaY"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord"/></a>
+<a href="https://youtube.com/@taaissu?si=_4rjspAD569Xt9WU"><img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube"/></a>
+<a href="https://www.reddit.com/u/taaissu/s/a97rKknYZT"><img src="https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white" alt="Reddit"/></a>
+<a href="https://x.com/taaissu?s=11"><img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" alt="X"/></a>
 <br/><br/>
 
 **Always learning, always building.**
