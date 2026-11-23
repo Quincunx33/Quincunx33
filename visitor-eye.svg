@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="250" height="64" viewBox="0 0 250 64" role="img" aria-labelledby="title desc">
+  <title id="title">Demo visitor counter: 999 views</title>
+  <desc id="desc">A white eye icon and 999 views. The number and individual letters burst apart, the eye flinches, and everything recovers.</desc>
+  <style>
+    .eye, .count, .label-letter, .flash, .spark {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation-iteration-count: infinite;
+      animation-duration: 5.8s;
+    }
+    .eye { animation-name: eye-react; animation-timing-function: ease-in-out; }
+    .count { animation-name: count-burst; animation-timing-function: ease-in-out; }
+    .label-letter { animation-name: label-burst; animation-timing-function: ease-in-out; animation-delay: var(--delay); }
+    .flash { animation-name: flash-burst; animation-timing-function: ease-out; }
+    .spark { animation-name: spark-burst; animation-timing-function: ease-out; }
+    @keyframes eye-react {
+      0%, 55%, 100% { transform: translateX(0) scaleY(1) rotate(0); }
+      58% { transform: translateX(-2px) scaleY(.12) rotate(-5deg); }
+      61% { transform: translateX(2px) scaleY(.7) rotate(5deg); }
+      64% { transform: translateX(-2px) scaleY(.86) rotate(-3deg); }
+      68%, 94% { transform: translateX(0) scaleY(1) rotate(0); }
+      96% { transform: translateX(0) scaleY(.12) rotate(0); }
+      98% { transform: translateX(0) scaleY(1) rotate(0); }
+    }
+    @keyframes count-burst {
+      0%, 55%, 100% { opacity: 1; transform: scale(1); }
+      58% { opacity: 1; transform: scale(1.22); }
+      61% { opacity: .8; transform: scale(.86); }
+      64%, 79% { opacity: 0; transform: scale(1.42); }
+      89% { opacity: 1; transform: scale(.92); }
+      92% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes label-burst {
+      0%, 55%, 100% { opacity: 1; transform: translate(0, 0) rotate(0) scale(1); }
+      58% { opacity: 1; transform: translate(0, 0) rotate(0) scale(1.16); }
+      64%, 78% { opacity: 0; transform: translate(var(--dx), var(--dy)) rotate(var(--turn)) scale(.35); }
+      89% { opacity: 1; transform: translate(0, 0) rotate(0) scale(.94); }
+      92% { opacity: 1; transform: translate(0, 0) rotate(0) scale(1); }
+    }
+    @keyframes flash-burst {
+      0%, 57%, 100% { opacity: 0; transform: scale(.1); }
+      60% { opacity: .9; transform: scale(1.1); }
+      64%, 75% { opacity: 0; transform: scale(1.5); }
+    }
+    @keyframes spark-burst {
+      0%, 57%, 100% { opacity: 0; transform: translate(0, 0) scale(.15); }
+      60% { opacity: 1; transform: translate(0, 0) scale(.45); }
+      72% { opacity: .85; transform: translate(var(--dx), var(--dy)) scale(1); }
+      79% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(.2); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .eye, .count, .label-letter, .flash, .spark { animation: none; }
+      .count { opacity: 1; transform: none; }
+      .flash, .spark { opacity: 0; }
+    }
+  </style>
+  <rect width="250" height="64" rx="4" fill="#141414"/>
+  <g transform="translate(2 11) scale(.68)">
+    <g class="eye" fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 32C16.1 14.7 30.5 6 48 6s31.9 8.7 43 26c-11.1 17.3-25.5 26-43 26S16.1 49.3 5 32Z"/>
+      <circle cx="48" cy="32" r="14"/>
+    </g>
+  </g>
+  <circle class="flash" cx="111" cy="32" r="21" fill="#fff"/>
+  <g fill="#ffb347">
+    <circle class="spark" style="--dx:-18px;--dy:-13px" cx="111" cy="32" r="2.3"/>
+    <circle class="spark" style="--dx:0px;--dy:-18px" cx="111" cy="32" r="1.8"/>
+    <circle class="spark" style="--dx:19px;--dy:-10px" cx="111" cy="32" r="2.2"/>
+    <circle class="spark" style="--dx:20px;--dy:8px" cx="111" cy="32" r="1.8"/>
+    <circle class="spark" style="--dx:4px;--dy:17px" cx="111" cy="32" r="2.3"/>
+    <circle class="spark" style="--dx:-17px;--dy:13px" cx="111" cy="32" r="2"/>
+    <circle class="spark" style="--dx:-21px;--dy:0px" cx="111" cy="32" r="1.7"/>
+  </g>
+  <text class="count" x="82" y="44" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="500">999</text>
+  <g fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400">
+    <text class="label-letter" style="--dx:-12px;--dy:-11px;--turn:-28deg;--delay:0ms" x="151" y="43">v</text>
+    <text class="label-letter" style="--dx:-5px;--dy:13px;--turn:18deg;--delay:35ms" x="166" y="43">i</text>
+    <text class="label-letter" style="--dx:3px;--dy:-14px;--turn:-16deg;--delay:70ms" x="174" y="43">e</text>
+    <text class="label-letter" style="--dx:12px;--dy:12px;--turn:22deg;--delay:105ms" x="190" y="43">w</text>
+    <text class="label-letter" style="--dx:18px;--dy:-7px;--turn:-24deg;--delay:140ms" x="212" y="43">s</text>
+  </g>
+</svg>
